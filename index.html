@@ -27,662 +27,191 @@
     --shadow: 0 4px 20px rgba(13,43,94,0.13);
     --shadow-sm: 0 2px 8px rgba(13,43,94,0.09);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #e8eef7;
-    color: var(--text-dark);
-    min-height: 100vh;
-    padding-bottom: 40px;
-  }
+  body { font-family: 'Noto Sans KR', sans-serif; background: #e8eef7; color: var(--text-dark); min-height: 100vh; padding-bottom: 40px; }
 
   /* ── STICKY HEADER ── */
   #sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
-    box-shadow: 0 4px 24px rgba(13,43,94,0.35);
-    padding: 12px 20px;
+    box-shadow: 0 4px 24px rgba(13,43,94,0.35); padding: 12px 20px;
   }
-
-  .header-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .header-title-block {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .header-emblem {
-    width: 38px;
-    height: 38px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(201,151,58,0.4);
-  }
-
-  .header-title {
-    color: var(--white);
-    font-family: 'Noto Serif KR', serif;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-
-  .header-title span {
-    display: block;
-    font-size: 11px;
-    color: var(--gold-light);
-    font-weight: 500;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  .header-inputs {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .header-input-group {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .header-input-group label {
-    color: var(--gold-light);
-    font-size: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
+  .header-inner { max-width: 920px; margin: 0 auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .header-title-block { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 200px; }
+  .header-emblem { width: 38px; height: 38px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(201,151,58,0.4); }
+  .header-title { color: var(--white); font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .header-title span { display: block; font-size: 11px; color: var(--gold-light); font-weight: 500; font-family: 'Noto Sans KR', sans-serif; }
+  .header-inputs { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .header-input-group { display: flex; align-items: center; gap: 6px; }
+  .header-input-group label { color: var(--gold-light); font-size: 12px; font-weight: 700; white-space: nowrap; }
   .header-input-group input {
-    background: rgba(255,255,255,0.13);
-    border: 1.5px solid rgba(201,151,58,0.5);
-    border-radius: 6px;
-    color: var(--white);
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 5px 10px;
-    outline: none;
-    transition: border-color 0.2s, background 0.2s;
-    width: 100px;
+    background: rgba(255,255,255,0.13); border: 1.5px solid rgba(201,151,58,0.5);
+    border-radius: 6px; color: var(--white); font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px; font-weight: 500; padding: 5px 10px; outline: none;
+    transition: border-color 0.2s, background 0.2s; width: 100px;
   }
-
   .header-input-group input::placeholder { color: rgba(255,255,255,0.45); }
-  .header-input-group input:focus {
-    border-color: var(--gold-light);
-    background: rgba(255,255,255,0.2);
-  }
-
+  .header-input-group input:focus { border-color: var(--gold-light); background: rgba(255,255,255,0.2); }
   #save-btn {
     background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-    color: var(--navy);
-    border: none;
-    border-radius: 8px;
-    padding: 8px 18px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 3px 14px rgba(201,151,58,0.45);
-    transition: transform 0.15s, box-shadow 0.15s;
-    white-space: nowrap;
-    letter-spacing: -0.3px;
+    color: var(--navy); border: none; border-radius: 8px; padding: 8px 18px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 900;
+    cursor: pointer; box-shadow: 0 3px 14px rgba(201,151,58,0.45);
+    transition: transform 0.15s, box-shadow 0.15s; white-space: nowrap;
   }
-
   #save-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,151,58,0.55); }
   #save-btn:active { transform: translateY(0); }
 
-  /* ── MAIN CONTENT ── */
-  #worksheet {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px 16px 30px;
-  }
+  /* ── WORKSHEET ── */
+  #worksheet { max-width: 920px; margin: 0 auto; padding: 20px 16px 30px; }
 
   /* ── TITLE BANNER ── */
   .title-banner {
     background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-    border-radius: 14px;
-    padding: 22px 28px 18px;
-    margin-bottom: 18px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow);
+    border-radius: 14px; padding: 22px 28px 18px; margin-bottom: 14px;
+    position: relative; overflow: hidden; box-shadow: var(--shadow);
   }
-
-  .title-banner::before {
-    content: '';
-    position: absolute;
-    top: -30px; right: -30px;
-    width: 130px; height: 130px;
-    border-radius: 50%;
-    background: rgba(201,151,58,0.18);
-  }
-
-  .title-banner::after {
-    content: '';
-    position: absolute;
-    bottom: -20px; left: 40px;
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-  }
-
-  .banner-top {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 14px;
-  }
-
-  .banner-badge {
-    background: var(--gold);
-    color: var(--navy);
-    font-size: 10px;
-    font-weight: 900;
-    padding: 3px 10px;
-    border-radius: 20px;
-    white-space: nowrap;
-    letter-spacing: 0.3px;
-    flex-shrink: 0;
-    margin-top: 4px;
-  }
-
-  .banner-achievement {
-    color: rgba(255,255,255,0.75);
-    font-size: 11px;
-    line-height: 1.6;
-    font-weight: 400;
-  }
-
-  .banner-main-title {
-    color: var(--white);
-    font-family: 'Noto Serif KR', serif;
-    font-size: clamp(22px, 4vw, 30px);
-    font-weight: 900;
-    letter-spacing: -0.5px;
-    line-height: 1.2;
-    margin-bottom: 6px;
-  }
-
-  .banner-main-title em {
-    color: var(--gold-light);
-    font-style: normal;
-  }
-
-  .banner-subtitle {
-    color: rgba(255,255,255,0.7);
-    font-size: 12px;
-    font-weight: 500;
-  }
+  .title-banner::before { content:''; position:absolute; top:-30px; right:-30px; width:130px; height:130px; border-radius:50%; background:rgba(201,151,58,0.18); }
+  .title-banner::after  { content:''; position:absolute; bottom:-20px; left:40px; width:80px; height:80px; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .banner-top { display:flex; align-items:flex-start; gap:16px; margin-bottom:14px; }
+  .banner-badge { background:var(--gold); color:var(--navy); font-size:10px; font-weight:900; padding:3px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0; margin-top:4px; }
+  .banner-achievement { color:rgba(255,255,255,0.75); font-size:11px; line-height:1.6; }
+  .banner-main-title { color:var(--white); font-family:'Noto Serif KR',serif; font-size:clamp(22px,4vw,30px); font-weight:900; letter-spacing:-0.5px; line-height:1.2; margin-bottom:6px; }
+  .banner-main-title em { color:var(--gold-light); font-style:normal; }
+  .banner-subtitle { color:rgba(255,255,255,0.7); font-size:12px; font-weight:500; }
 
   /* ── RIGHTS LEGEND ── */
-  .rights-legend {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 14px 18px;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow-sm);
-    border-left: 5px solid var(--gold);
-  }
-
-  .rights-legend-title {
-    font-size: 12px;
-    font-weight: 900;
-    color: var(--navy);
-    margin-bottom: 10px;
-    letter-spacing: 0.3px;
-  }
-
-  .rights-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .pill {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    border: 1.5px solid;
-  }
-
-  .pill-dot { width: 7px; height: 7px; border-radius: 50%; }
-
-  .pill-equality   { background: #fef3f2; color: #c0392b; border-color: #e8a09a; }
-  .pill-equality .pill-dot   { background: #c0392b; }
-  .pill-freedom    { background: #eff8f0; color: #1a6b3a; border-color: #7ec89e; }
-  .pill-freedom .pill-dot    { background: #1a6b3a; }
-  .pill-voting     { background: #fdf6e3; color: #8a5a00; border-color: #d4a847; }
-  .pill-voting .pill-dot     { background: #c9973a; }
-  .pill-claim      { background: #eef4ff; color: #1d5fa8; border-color: #89b4e8; }
-  .pill-claim .pill-dot      { background: #1d5fa8; }
-  .pill-social     { background: #f3eeff; color: #5b3fa0; border-color: #b09ad8; }
-  .pill-social .pill-dot     { background: #5b3fa0; }
-  .pill-art10      { background: #fff0f6; color: #a02060; border-color: #d888b0; }
-  .pill-art10 .pill-dot      { background: #a02060; }
+  .rights-legend { background:var(--white); border-radius:12px; padding:14px 18px; margin-bottom:12px; box-shadow:var(--shadow-sm); border-left:5px solid var(--gold); }
+  .rights-legend-title { font-size:12px; font-weight:900; color:var(--navy); margin-bottom:10px; }
+  .rights-pills { display:flex; flex-wrap:wrap; gap:6px; }
+  .pill { display:flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; border:1.5px solid; }
+  .pill-dot { width:7px; height:7px; border-radius:50%; }
+  .pill-equality { background:#fef3f2; color:#c0392b; border-color:#e8a09a; } .pill-equality .pill-dot { background:#c0392b; }
+  .pill-freedom  { background:#eff8f0; color:#1a6b3a; border-color:#7ec89e; } .pill-freedom  .pill-dot { background:#1a6b3a; }
+  .pill-voting   { background:#fdf6e3; color:#8a5a00; border-color:#d4a847; } .pill-voting   .pill-dot { background:#c9973a; }
+  .pill-claim    { background:#eef4ff; color:#1d5fa8; border-color:#89b4e8; } .pill-claim    .pill-dot { background:#1d5fa8; }
+  .pill-social   { background:#f3eeff; color:#5b3fa0; border-color:#b09ad8; } .pill-social   .pill-dot { background:#5b3fa0; }
+  .pill-art10    { background:#fff0f6; color:#a02060; border-color:#d888b0; } .pill-art10    .pill-dot { background:#a02060; }
 
   /* ── JIGSAW INFO ── */
-  .jigsaw-info {
-    background: linear-gradient(90deg, #f0f4ff 0%, #e8f0fb 100%);
-    border: 1.5px solid #b8cef0;
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-bottom: 18px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .jigsaw-icon { font-size: 22px; flex-shrink: 0; }
-
-  .jigsaw-text { font-size: 12px; color: var(--navy); line-height: 1.7; }
-  .jigsaw-text strong { font-weight: 900; color: var(--blue); }
+  .jigsaw-info { background:linear-gradient(90deg,#f0f4ff,#e8f0fb); border:1.5px solid #b8cef0; border-radius:10px; padding:12px 16px; margin-bottom:18px; display:flex; align-items:flex-start; gap:10px; }
+  .jigsaw-icon { font-size:22px; flex-shrink:0; }
+  .jigsaw-text { font-size:12px; color:var(--navy); line-height:1.7; }
+  .jigsaw-text strong { font-weight:900; color:var(--blue); }
 
   /* ── CASE CARDS ── */
-  .case-card {
-    background: var(--white);
-    border-radius: 14px;
-    margin-bottom: 18px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    border: 1.5px solid var(--gray-mid);
-  }
+  .case-card { background:var(--white); border-radius:14px; margin-bottom:18px; box-shadow:var(--shadow); overflow:hidden; border:1.5px solid var(--gray-mid); }
+  .case-header { display:flex; align-items:stretch; background:linear-gradient(90deg,var(--navy),var(--navy-mid)); }
+  .case-number { background:var(--gold); color:var(--navy); font-family:'Noto Serif KR',serif; font-size:22px; font-weight:900; padding:14px 18px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:68px; flex-shrink:0; line-height:1; }
+  .case-number span { font-size:9px; font-family:'Noto Sans KR',sans-serif; font-weight:700; margin-top:3px; letter-spacing:0.5px; color:var(--navy-mid); }
+  .case-header-content { padding:12px 16px; flex:1; }
+  .case-label { color:var(--gold-light); font-size:10px; font-weight:700; letter-spacing:1px; margin-bottom:4px; }
+  .case-title { color:var(--white); font-family:'Noto Serif KR',serif; font-size:15px; font-weight:700; line-height:1.4; }
+  .case-body { padding:16px; }
+  .case-scenario { background:var(--cream); border:1.5px solid var(--cream-dark); border-left:4px solid var(--blue-light); border-radius:8px; padding:12px 14px; font-size:13px; line-height:1.75; color:var(--text-dark); margin-bottom:12px; font-weight:500; }
+  .case-scenario strong { color:var(--navy); font-weight:900; }
 
-  .case-header {
-    display: flex;
-    align-items: stretch;
-    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-mid) 100%);
-    padding: 0;
-  }
-
-  .case-number {
-    background: var(--gold);
-    color: var(--navy);
-    font-family: 'Noto Serif KR', serif;
-    font-size: 22px;
-    font-weight: 900;
-    padding: 14px 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 68px;
-    flex-shrink: 0;
-    line-height: 1;
-  }
-
-  .case-number span {
-    font-size: 9px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 700;
-    margin-top: 3px;
-    letter-spacing: 0.5px;
-    color: var(--navy-mid);
-  }
-
-  .case-header-content {
-    padding: 12px 16px;
-    flex: 1;
-  }
-
-  .case-label {
-    color: var(--gold-light);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-  }
-
-  .case-title {
-    color: var(--white);
-    font-family: 'Noto Serif KR', serif;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-
-  .case-body { padding: 16px; }
-
-  .case-scenario {
-    background: var(--cream);
-    border: 1.5px solid var(--cream-dark);
-    border-left: 4px solid var(--blue-light);
-    border-radius: 8px;
-    padding: 12px 14px;
-    font-size: 13px;
-    line-height: 1.75;
-    color: var(--text-dark);
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-
-  .case-scenario strong { color: var(--navy); font-weight: 900; }
+  /* ── 스캐폴딩 힌트 ── */
+  .scaffold-box { background:#f0f7ff; border:1.5px solid #b8d4f5; border-radius:9px; padding:10px 14px; margin-bottom:12px; }
+  .scaffold-title { font-size:11px; font-weight:900; color:#1d5fa8; display:flex; align-items:center; gap:6px; }
+  .scaffold-toggle { display:inline-flex; align-items:center; background:var(--blue); color:var(--white); border:none; border-radius:10px; padding:2px 9px; font-family:'Noto Sans KR',sans-serif; font-size:10px; font-weight:700; cursor:pointer; transition:background 0.15s; }
+  .scaffold-toggle:hover { background:var(--blue-light); }
+  .scaffold-content { display:none; margin-top:8px; }
+  .scaffold-content.open { display:block; }
+  .scaffold-list { list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:7px; }
+  .scaffold-list li { font-size:11.5px; color:#1a3f7a; line-height:1.7; padding-left:14px; position:relative; }
+  .scaffold-list li::before { content:'Q.'; position:absolute; left:0; color:#3a82d4; font-size:10px; font-weight:900; top:1px; }
+  .scaffold-keywords { display:flex; flex-wrap:wrap; gap:5px; border-top:1px dashed #b8d4f5; padding-top:7px; margin-top:2px; }
+  .scaffold-keywords-label { font-size:10px; font-weight:700; color:#3a82d4; width:100%; margin-bottom:2px; }
+  .kw-tag { background:rgba(29,95,168,0.1); color:var(--blue); border:1px solid #b8d4f5; border-radius:10px; padding:2px 8px; font-size:10.5px; font-weight:700; }
 
   /* ── ANALYSIS GRID ── */
-  .analysis-grid {
-    display: grid;
-    gap: 10px;
-  }
+  .analysis-grid { display:grid; gap:10px; }
+  .analysis-block { border-radius:9px; overflow:hidden; border:1.5px solid var(--gray-mid); }
+  .analysis-block-header { display:flex; align-items:center; gap:8px; padding:8px 12px; font-size:12px; font-weight:900; }
+  .block-icon { font-size:14px; }
+  .analysis-block-body { padding:10px 12px 12px; background:var(--white); }
+  .block-rights  .analysis-block-header { background:#eef4ff; color:var(--blue);        border-bottom:1.5px solid #c0d8f5; }
+  .block-limit   .analysis-block-header { background:#fff8ee; color:#7a4800;             border-bottom:1.5px solid #e8c97a; }
+  .block-verdict .analysis-block-header { background:#f0fef4; color:var(--green-accent); border-bottom:1.5px solid #7ec89e; }
 
-  .analysis-block {
-    border-radius: 9px;
-    overflow: hidden;
-    border: 1.5px solid var(--gray-mid);
-  }
+  /* ── RIGHTS 입력 ── */
+  .rights-row { display:flex; flex-direction:column; gap:10px; }
+  .rights-item { display:flex; align-items:flex-start; gap:7px; }
+  .rights-item-num { background:var(--navy); color:var(--white); font-size:10px; font-weight:900; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:4px; }
+  .rights-item-inner { flex:1; display:flex; flex-direction:column; gap:5px; }
+  .type-select { display:flex; gap:5px; }
+  .type-btn { padding:3px 11px; border-radius:10px; border:1.5px solid; font-family:'Noto Sans KR',sans-serif; font-size:11px; font-weight:700; cursor:pointer; background:transparent; transition:all 0.15s; }
+  .type-btn-violate { border-color:var(--red-accent); color:var(--red-accent); }
+  .type-btn-violate.active { background:var(--red-accent); color:var(--white); }
+  .type-btn-protect { border-color:var(--green-accent); color:var(--green-accent); }
+  .type-btn-protect.active { background:var(--green-accent); color:var(--white); }
 
-  .analysis-block-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 0.2px;
-  }
+  /* ── 공통 textarea ── */
+  textarea { width:100%; border:1.5px solid var(--gray-mid); border-radius:6px; padding:6px 9px; font-family:'Noto Sans KR',sans-serif; font-size:12px; resize:none; line-height:1.55; color:var(--text-dark); background:var(--gray-light); transition:border-color 0.2s; }
+  textarea:focus { outline:none; border-color:var(--blue-light); background:var(--white); }
+  textarea::placeholder { color:#aab4c8; font-size:11px; }
 
-  .block-icon { font-size: 14px; }
-
-  .analysis-block-body { padding: 8px 12px 10px; background: var(--white); }
-
-  .block-rights .analysis-block-header { background: #eef4ff; color: var(--blue); border-bottom: 1.5px solid #c0d8f5; }
-  .block-limit  .analysis-block-header  { background: #fff8ee; color: #7a4800; border-bottom: 1.5px solid #e8c97a; }
-  .block-verdict .analysis-block-header { background: #f0fef4; color: var(--green-accent); border-bottom: 1.5px solid #7ec89e; }
-
-  /* ── RIGHTS ROW ── */
-  .rights-row {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .rights-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .rights-item-num {
-    background: var(--navy);
-    color: var(--white);
-    font-size: 10px;
-    font-weight: 900;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .rights-item textarea {
-    flex: 1;
-    border: 1.5px solid var(--gray-mid);
-    border-radius: 6px;
-    padding: 5px 8px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    resize: none;
-    min-height: 32px;
-    line-height: 1.5;
-    color: var(--text-dark);
-    background: var(--gray-light);
-    transition: border-color 0.2s;
-  }
-
-  .rights-item textarea:focus {
-    outline: none;
-    border-color: var(--blue-light);
-    background: var(--white);
-  }
-
-  /* ── LIMIT CHECKBOXES ── */
-  .limit-checks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 6px;
-  }
-
-  .limit-check-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: var(--cream);
-    border: 1.5px solid var(--cream-dark);
-    border-radius: 20px;
-    padding: 4px 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-mid);
-    user-select: none;
-  }
-
-  .limit-check-item input[type="checkbox"] { display: none; }
-
-  .limit-check-item .check-box {
-    width: 15px; height: 15px;
-    border: 2px solid var(--gray-mid);
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    flex-shrink: 0;
-    transition: all 0.15s;
-  }
-
-  .limit-check-item.checked {
-    background: var(--navy);
-    border-color: var(--navy);
-    color: var(--white);
-  }
-
-  .limit-check-item.checked .check-box {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--navy);
-  }
-
-  .limit-note textarea {
-    width: 100%;
-    border: 1.5px solid var(--gray-mid);
-    border-radius: 6px;
-    padding: 6px 8px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    resize: none;
-    min-height: 36px;
-    background: var(--gray-light);
-    color: var(--text-dark);
-    line-height: 1.5;
-    transition: border-color 0.2s;
-  }
-
-  .limit-note textarea:focus {
-    outline: none;
-    border-color: var(--gold);
-    background: var(--white);
-  }
+  /* ── LIMIT CHECKS ── */
+  .limit-checks { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:7px; }
+  .limit-check-item { display:flex; align-items:center; gap:5px; background:var(--cream); border:1.5px solid var(--cream-dark); border-radius:20px; padding:4px 10px; cursor:pointer; transition:all 0.2s; font-size:12px; font-weight:700; color:var(--text-mid); user-select:none; }
+  .limit-check-item input[type="checkbox"] { display:none; }
+  .limit-check-item .check-box { width:15px; height:15px; border:2px solid var(--gray-mid); border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0; }
+  .limit-check-item.checked { background:var(--navy); border-color:var(--navy); color:var(--white); }
+  .limit-check-item.checked .check-box { background:var(--gold); border-color:var(--gold); color:var(--navy); }
 
   /* ── VERDICT ── */
-  .verdict-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    margin-bottom: 6px;
-  }
-
-  .verdict-btn {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 2px solid;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: transparent;
-  }
-
-  .verdict-btn-protect {
-    border-color: var(--green-accent);
-    color: var(--green-accent);
-  }
-
-  .verdict-btn-protect.active {
-    background: var(--green-accent);
-    color: var(--white);
-  }
-
-  .verdict-btn-violate {
-    border-color: var(--red-accent);
-    color: var(--red-accent);
-  }
-
-  .verdict-btn-violate.active {
-    background: var(--red-accent);
-    color: var(--white);
-  }
-
-  .verdict-note textarea {
-    width: 100%;
-    border: 1.5px solid var(--gray-mid);
-    border-radius: 6px;
-    padding: 6px 8px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    resize: none;
-    min-height: 36px;
-    background: var(--gray-light);
-    color: var(--text-dark);
-    line-height: 1.5;
-    transition: border-color 0.2s;
-  }
-
-  .verdict-note textarea:focus {
-    outline: none;
-    border-color: var(--green-accent);
-    background: var(--white);
-  }
+  .verdict-row { display:flex; gap:8px; margin-bottom:7px; }
+  .verdict-btn { padding:6px 14px; border-radius:20px; border:2px solid; font-family:'Noto Sans KR',sans-serif; font-size:12px; font-weight:900; cursor:pointer; transition:all 0.2s; background:transparent; }
+  .verdict-btn-protect { border-color:var(--green-accent); color:var(--green-accent); }
+  .verdict-btn-protect.active { background:var(--green-accent); color:var(--white); }
+  .verdict-btn-violate { border-color:var(--red-accent); color:var(--red-accent); }
+  .verdict-btn-violate.active { background:var(--red-accent); color:var(--white); }
 
   /* ── SHARE SECTION ── */
-  .share-section {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-top: 6px;
-    margin-bottom: 0;
-  }
+  .share-section { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:12px; padding:14px 18px; margin-top:10px; }
+  .share-title { color:var(--gold-light); font-size:12px; font-weight:900; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .share-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .share-item { display:flex; flex-direction:column; gap:4px; }
+  .share-item label { color:rgba(255,255,255,0.75); font-size:11px; font-weight:700; }
+  .share-item textarea { border:1.5px solid rgba(201,151,58,0.4); border-radius:7px; padding:7px 10px; font-size:12px; min-height:44px; background:rgba(255,255,255,0.1); color:var(--white); }
+  .share-item textarea::placeholder { color:rgba(255,255,255,0.35); }
+  .share-item textarea:focus { border-color:var(--gold-light); background:rgba(255,255,255,0.18); }
 
-  .share-title {
-    color: var(--gold-light);
-    font-size: 12px;
-    font-weight: 900;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .share-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .share-item { display: flex; flex-direction: column; gap: 4px; }
-
-  .share-item label {
-    color: rgba(255,255,255,0.75);
-    font-size: 11px;
-    font-weight: 700;
-  }
-
-  .share-item textarea {
-    border: 1.5px solid rgba(201,151,58,0.4);
-    border-radius: 7px;
-    padding: 7px 10px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    resize: none;
-    min-height: 40px;
-    background: rgba(255,255,255,0.1);
-    color: var(--white);
-    line-height: 1.5;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .share-item textarea::placeholder { color: rgba(255,255,255,0.35); }
-
-  .share-item textarea:focus {
-    outline: none;
-    border-color: var(--gold-light);
-    background: rgba(255,255,255,0.18);
-  }
+  /* ── SELF-EVALUATION ── */
+  .self-eval { background:var(--white); border-radius:14px; margin-bottom:14px; box-shadow:var(--shadow); overflow:hidden; border:2.5px solid var(--gold); }
+  .self-eval-header { background:linear-gradient(90deg,var(--gold),var(--gold-light)); padding:13px 20px; display:flex; align-items:center; gap:10px; }
+  .self-eval-header span { font-size:22px; }
+  .self-eval-header h3 { font-family:'Noto Serif KR',serif; font-size:15px; font-weight:900; color:var(--navy); }
+  .self-eval-body { padding:18px 20px; display:flex; flex-direction:column; gap:14px; }
+  .eval-row { display:grid; grid-template-columns:1fr auto; gap:14px; align-items:center; }
+  .eval-question { font-size:12.5px; font-weight:700; color:var(--text-dark); line-height:1.55; }
+  .eval-question small { display:block; font-weight:400; color:var(--text-light); font-size:11px; margin-top:3px; }
+  .star-row { display:flex; gap:4px; }
+  .star-btn { width:30px; height:30px; border-radius:50%; border:2px solid var(--gray-mid); background:var(--white); font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.15s; color:var(--text-light); font-family:'Noto Sans KR',sans-serif; font-weight:700; }
+  .star-btn.lit { border-color:var(--gold); background:var(--gold); color:var(--white); }
+  .eval-divider { border:none; border-top:1.5px dashed var(--gray-mid); }
+  .eval-comment { display:flex; flex-direction:column; gap:6px; }
+  .eval-comment label { font-size:12.5px; font-weight:700; color:var(--navy); }
 
   /* ── FOOTER ── */
-  .footer-bar {
-    background: var(--navy);
-    color: rgba(255,255,255,0.55);
-    text-align: center;
-    font-size: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 20px;
-    letter-spacing: 0.5px;
-    line-height: 1.8;
-  }
-
-  .footer-bar strong { color: var(--gold-light); }
+  .footer-bar { background:var(--navy); color:rgba(255,255,255,0.55); text-align:center; font-size:10px; padding:10px; border-radius:8px; margin-top:6px; letter-spacing:0.5px; line-height:1.8; }
+  .footer-bar strong { color:var(--gold-light); }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    #sticky-header { padding: 10px 12px; }
-    .header-inner { gap: 8px; }
-    .header-inputs { width: 100%; }
-    .header-input-group input { width: 80px; font-size: 12px; }
-    #save-btn { width: 100%; text-align: center; font-size: 12px; }
-    .title-banner { padding: 16px 16px 14px; }
-    .case-body { padding: 12px; }
-    .share-grid { grid-template-columns: 1fr; }
-    .rights-legend { padding: 10px 12px; }
+  @media (max-width:600px) {
+    #sticky-header { padding:10px 12px; }
+    .header-inputs { width:100%; }
+    .header-input-group input { width:80px; }
+    #save-btn { width:100%; }
+    .case-body { padding:12px; }
+    .share-grid { grid-template-columns:1fr; }
+    .eval-row { grid-template-columns:1fr; }
   }
-
-  @media (max-width: 400px) {
-    .case-number { min-width: 54px; font-size: 18px; padding: 12px 12px; }
-    .case-title { font-size: 13px; }
+  @media print {
+    #sticky-header { display:none; }
+    body { background:#fff; }
+    .scaffold-box { display:none !important; }
   }
 </style>
 </head>
@@ -693,20 +222,11 @@
   <div class="header-inner">
     <div class="header-title-block">
       <div class="header-emblem">⚖️</div>
-      <div class="header-title">
-        기본권 사례 연습
-        <span>중학교 사회 · 인권과 헌법</span>
-      </div>
+      <div class="header-title">기본권 사례 연습<span>중학교 사회 · 인권과 헌법</span></div>
     </div>
     <div class="header-inputs">
-      <div class="header-input-group">
-        <label>학번</label>
-        <input type="text" id="student-id" placeholder="예) 30101" maxlength="10">
-      </div>
-      <div class="header-input-group">
-        <label>이름</label>
-        <input type="text" id="student-name" placeholder="홍길동" maxlength="10">
-      </div>
+      <div class="header-input-group"><label>학번</label><input type="text" id="student-id" placeholder="예) 30101" maxlength="10"></div>
+      <div class="header-input-group"><label>이름</label><input type="text" id="student-name" placeholder="이름 입력" maxlength="10"></div>
       <button id="save-btn" onclick="saveImage()">📥 나의 활동지 이미지로 저장하기</button>
     </div>
   </div>
@@ -715,42 +235,39 @@
 <!-- ── WORKSHEET BODY ── -->
 <div id="worksheet">
 
-  <!-- TITLE BANNER -->
   <div class="title-banner">
     <div class="banner-top">
       <div class="banner-badge">성취기준 9사(일사)06-01</div>
-      <div class="banner-achievement">
-        인권 보장의 중요성을 이해하고, 우리나라 헌법에서 보장하는 기본권의 종류와 기본권 제한의 내용·한계를 탐구한다.
-      </div>
+      <div class="banner-achievement">인권 보장의 중요성을 이해하고, 우리나라 헌법에서 보장하는 기본권의 종류와 기본권 제한의 내용·한계를 탐구한다.</div>
     </div>
     <div class="banner-main-title">헌법이 보장하는 <em>기본권</em>을 찾아라!</div>
     <div class="banner-subtitle">🧩 Jigsaw 모둠 학습 &nbsp;·&nbsp; 사례 분석 활동지 &nbsp;·&nbsp; 5가지 사례 탐구</div>
   </div>
 
-  <!-- RIGHTS LEGEND -->
   <div class="rights-legend">
     <div class="rights-legend-title">📌 기본권 종류 한눈에 보기</div>
     <div class="rights-pills">
       <div class="pill pill-equality"><div class="pill-dot"></div>평등권 — 차별받지 않을 권리 (헌법 제11조)</div>
       <div class="pill pill-freedom"><div class="pill-dot"></div>자유권 — 간섭받지 않을 자유 (제12~22조)</div>
-      <div class="pill pill-voting"><div class="pill-dot"></div>참정권 — 정치에 참여할 권리 (제24~25조)</div>
+      <div class="pill pill-voting"><div class="pill-dot"></div>참정권 — 정치에 참여할 권리 (선거권·공무담임권·국민투표권)</div>
       <div class="pill pill-claim"><div class="pill-dot"></div>청구권 — 국가에 요청할 권리 (제26~29조)</div>
       <div class="pill pill-social"><div class="pill-dot"></div>사회권 — 인간다운 삶을 누릴 권리 (제31~36조)</div>
       <div class="pill pill-art10"><div class="pill-dot"></div>헌법 제10조 — 인간의 존엄과 행복추구권</div>
     </div>
   </div>
 
-  <!-- JIGSAW INFO -->
   <div class="jigsaw-info">
     <div class="jigsaw-icon">🧩</div>
     <div class="jigsaw-text">
-      <strong>Jigsaw 학습 방법</strong> | 각자 맡은 사례를 <strong>전문가 모둠</strong>에서 깊이 분석한 뒤,
-      <strong>원래 모둠</strong>으로 돌아와 다른 모둠원에게 내용을 설명해 주세요.
+      <strong>Jigsaw 학습 방법</strong> | 각자 맡은 사례를 <strong>전문가 모둠</strong>에서 깊이 분석한 뒤, <strong>원래 모둠</strong>으로 돌아와 다른 모둠원에게 내용을 설명해 주세요.
       나는 <strong>사례 ___번</strong>을 담당합니다. 해당 사례를 꼼꼼히 작성하고, 모둠 공유 칸도 채워주세요!
     </div>
   </div>
 
-  <!-- ═══ CASE 1 ═══ -->
+
+  <!-- ══════════════════════════════
+       CASE 1 · 교육 현장
+  ══════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">1<span>사례</span></div>
@@ -767,63 +284,73 @@
         태양이는 결국 시험에 제대로 응시하지 못했습니다.
       </div>
 
+      <div class="scaffold-box">
+        <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
+        <div class="scaffold-content">
+          <ul class="scaffold-list">
+            <li>학교는 "모두에게 동일한 조건"을 적용했다고 했습니다. 그런데 장애가 있는 태양이에게 '동일한 조건'이 과연 공평한 것일까요?</li>
+            <li>태양이가 시험에 응시하지 못했다면, 앞으로 학교에 다니면서 무엇을 할 수 없게 되는 건가요?</li>
+            <li>학교의 이 결정이 국가와 사회 전체를 위해 꼭 필요한 이유가 있을까요? 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당하는지 생각해 보세요.</li>
+          </ul>
+          <div class="scaffold-keywords">
+            <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
+            <span class="kw-tag">헌법 제11조</span>
+            <span class="kw-tag">헌법 제31조</span>
+            <span class="kw-tag">장애를 이유로 한 차별</span>
+            <span class="kw-tag">교육의 기회</span>
+          </div>
+        </div>
+      </div>
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header">
-            <span class="block-icon">🔍</span> 이 사례에서 관련된 기본권을 2가지 이상 찾아 쓰세요
-          </div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
-                <textarea placeholder="예) 평등권 — 장애를 이유로 다른 학생과 동등한 시험 기회를 박탈당했으므로"></textarea>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
               <div class="rights-item">
                 <div class="rights-item-num">②</div>
-                <textarea placeholder="예) 교육받을 권리(사회권) — 입학 시험 응시 자체를 가로막아 교육 기회가 침해됨"></textarea>
-              </div>
-              <div class="rights-item">
-                <div class="rights-item-num">③</div>
-                <textarea placeholder="추가 기본권이 있다면 써 보세요 (선택)"></textarea>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header">
-            <span class="block-icon">⚖️</span> 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요
-          </div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
-              <label class="limit-check-item" onclick="toggleCheck(this)">
-                <input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장
-              </label>
-              <label class="limit-check-item" onclick="toggleCheck(this)">
-                <input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지
-              </label>
-              <label class="limit-check-item" onclick="toggleCheck(this)">
-                <input type="checkbox"><span class="check-box">✓</span>🌏 공공복리
-              </label>
+              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
+              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
+              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
             </div>
-            <div class="limit-note">
-              <textarea placeholder="해당 항목에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
-            </div>
+            <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
 
         <div class="analysis-block block-verdict">
-          <div class="analysis-block-header">
-            <span class="block-icon">📋</span> 최종 판단 — 기본권이 보장되었나요, 침해되었나요?
-          </div>
+          <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
             <div class="verdict-row">
               <button class="verdict-btn verdict-btn-protect" onclick="setVerdict(this)">✅ 보장</button>
               <button class="verdict-btn verdict-btn-violate" onclick="setVerdict(this)">❌ 침해</button>
             </div>
-            <div class="verdict-note">
-              <textarea placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea>
-            </div>
+            <textarea rows="2" placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea>
           </div>
         </div>
       </div>
@@ -831,20 +358,17 @@
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
-          <div class="share-item">
-            <label>내가 모둠원에게 설명할 핵심 내용</label>
-            <textarea placeholder="간단히 핵심만 정리해두세요!"></textarea>
-          </div>
-          <div class="share-item">
-            <label>모둠원에게서 배운 점 / 추가 의견</label>
-            <textarea placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea>
-          </div>
+          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
+          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ CASE 2 ═══ -->
+
+  <!-- ══════════════════════════════
+       CASE 2 · SNS & 표현
+  ══════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">2<span>사례</span></div>
@@ -861,54 +385,73 @@
         다율이는 자신의 의견을 표현할 권리가 있다고 주장하고 있습니다.
       </div>
 
+      <div class="scaffold-box">
+        <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
+        <div class="scaffold-content">
+          <ul class="scaffold-list">
+            <li>국가가 허락하지 않으면 자신의 생각을 말하거나 쓸 수 없다면, 국민의 어떤 자유가 침해되는 걸까요?</li>
+            <li>다율이가 SNS에 쓴 내용은 정부에 대한 의견입니다. 국민이 정부나 공공기관의 정책을 비판하는 것은 민주주의에서 허용되어야 할까요, 금지되어야 할까요?</li>
+            <li>기관이 내세운 이유인 "사회 혼란"은 국가 안전보장, 질서 유지, 공공복리 중 어디에 가장 가까울까요? 단순한 정부 비판 글이 정말 그 기준에 해당하는지 생각해 보세요.</li>
+          </ul>
+          <div class="scaffold-keywords">
+            <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
+            <span class="kw-tag">헌법 제21조</span>
+            <span class="kw-tag">헌법 제10조</span>
+            <span class="kw-tag">생각·표현의 자유</span>
+            <span class="kw-tag">질서 유지</span>
+          </div>
+        </div>
+      </div>
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header">
-            <span class="block-icon">🔍</span> 이 사례에서 관련된 기본권을 2가지 이상 찾아 쓰세요
-          </div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
-              <div class="rights-item"><div class="rights-item-num">①</div>
-                <textarea placeholder="예) 자유권(표현의 자유) — 자신의 생각을 SNS에 자유롭게 표현할 권리가 침해됨"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">①</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
-              <div class="rights-item"><div class="rights-item-num">②</div>
-                <textarea placeholder="예) 헌법 제10조(행복추구권) — 자신의 신념대로 살아갈 권리가 제한됨"></textarea>
-              </div>
-              <div class="rights-item"><div class="rights-item-num">③</div>
-                <textarea placeholder="추가 기본권이 있다면 써 보세요 (선택)"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">②</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header">
-            <span class="block-icon">⚖️</span> 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요
-          </div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
             </div>
-            <div class="limit-note">
-              <textarea placeholder="단순 정부 비판이 사회 혼란에 해당하는지, 제한이 과도한지 생각해 보세요."></textarea>
-            </div>
+            <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
 
         <div class="analysis-block block-verdict">
-          <div class="analysis-block-header">
-            <span class="block-icon">📋</span> 최종 판단 — 기본권이 보장되었나요, 침해되었나요?
-          </div>
+          <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
             <div class="verdict-row">
               <button class="verdict-btn verdict-btn-protect" onclick="setVerdict(this)">✅ 보장</button>
               <button class="verdict-btn verdict-btn-violate" onclick="setVerdict(this)">❌ 침해</button>
             </div>
-            <div class="verdict-note">
-              <textarea placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea>
-            </div>
+            <textarea rows="2" placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea>
           </div>
         </div>
       </div>
@@ -916,68 +459,102 @@
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea placeholder="간단히 핵심만 정리해두세요!"></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
+          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ CASE 3 ═══ -->
+
+  <!-- ══════════════════════════════
+       CASE 3 · 선거 & 참정권
+       (선거권 / 공무담임권 / 국민투표권)
+  ══════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">3<span>사례</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 03 · 선거 &amp; 참정</div>
-        <div class="case-title">18세 청소년의 선거 참여와 공직 출마</div>
+        <div class="case-title">선거일 투표 참여와 주민 투표 거부 논란</div>
       </div>
     </div>
     <div class="case-body">
       <div class="case-scenario">
-        만 18세 고등학생 도훈이는 관심 있는 지방선거에서 <strong>투표를 하고 싶었지만</strong>,
-        친구로부터 "고등학생은 투표할 수 없다"는 말을 들었습니다.
-        한편 도훈이의 형(만 25세)은 지역구 시의원 선거에 출마하려 했으나,
-        선거관리위원회에서 <strong>후보 등록 절차와 자격 요건</strong>을 안내받고 문제없이 출마 신청을 마쳤습니다.
+        만 18세 고등학생 도훈이는 생애 처음으로 대통령 선거 투표를 했습니다.
+        한편 도훈이가 사는 마을에서는 새 도로 건설에 관한 <strong>주민 투표</strong>가 예정되어 있었는데,
+        마을 이장이 "주민 투표는 어른들만 참여하는 거야"라며 <strong>도훈이의 참여를 막았습니다.</strong>
+        또한 도훈이의 삼촌(만 32세)은 지역 구청 공무원 채용 시험에 지원했으나,
+        담당자로부터 <strong>특정 정당원이라는 이유로 접수가 거부</strong>당했습니다.
+      </div>
+
+      <div class="scaffold-box">
+        <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
+        <div class="scaffold-content">
+          <ul class="scaffold-list">
+            <li>도훈이는 대통령 선거에서 투표했습니다. 국민이 선거에서 투표할 수 있는 권리를 무엇이라고 배웠나요?</li>
+            <li>주민 투표는 국민이 직접 나라의 중요한 결정에 참여하는 방식입니다. 헌법에서 배운 참정권 중 이것과 관련된 권리는 무엇일까요?</li>
+            <li>삼촌이 지원한 공무원은 국가·지방자치단체의 일을 맡는 직책입니다. 국민이 이런 자리에 지원할 수 있는 권리를 무엇이라고 하나요? 정당원이라는 이유로 거부당한 것은 어떤 문제일까요?</li>
+          </ul>
+          <div class="scaffold-keywords">
+            <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
+            <span class="kw-tag">선거권</span>
+            <span class="kw-tag">국민투표권</span>
+            <span class="kw-tag">공무담임권</span>
+            <span class="kw-tag">참정권</span>
+          </div>
+        </div>
       </div>
 
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> 이 사례에서 관련된 기본권을 2가지 이상 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
-              <div class="rights-item"><div class="rights-item-num">①</div>
-                <textarea placeholder="예) 참정권(선거권) — 만 18세 이상은 선거권이 있으므로 지호는 투표할 수 있음 (친구 말이 틀림)"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">①</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
-              <div class="rights-item"><div class="rights-item-num">②</div>
-                <textarea placeholder="예) 참정권(피선거권) — 지호의 형은 법적 절차에 따라 출마 권리가 정당하게 보장됨"></textarea>
-              </div>
-              <div class="rights-item"><div class="rights-item-num">③</div>
-                <textarea placeholder="추가 기본권이 있다면 써 보세요 (선택)"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">②</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
             </div>
-            <div class="limit-note"><textarea placeholder="이 사례에서 제한이 있다면 어떤 경우인지, 보장된 부분은 무엇인지 정리해보세요."></textarea></div>
+            <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
 
         <div class="analysis-block block-verdict">
-          <div class="analysis-block-header"><span class="block-icon">📋</span> 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
+          <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
             <div class="verdict-row">
               <button class="verdict-btn verdict-btn-protect" onclick="setVerdict(this)">✅ 보장</button>
               <button class="verdict-btn verdict-btn-violate" onclick="setVerdict(this)">❌ 침해</button>
             </div>
-            <div class="verdict-note"><textarea placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea></div>
+            <textarea rows="2" placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea>
           </div>
         </div>
       </div>
@@ -985,14 +562,17 @@
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea placeholder="간단히 핵심만 정리해두세요!"></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
+          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ CASE 4 ═══ -->
+
+  <!-- ══════════════════════════════
+       CASE 4 · 노동 & 생활
+  ══════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">4<span>사례</span></div>
@@ -1010,44 +590,73 @@
         거부하면 <strong>해고하겠다고 협박</strong>했습니다.
       </div>
 
+      <div class="scaffold-box">
+        <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
+        <div class="scaffold-content">
+          <ul class="scaffold-list">
+            <li>사장님은 세빈이가 어리다는 이유로 최저 임금보다 낮은 돈을 줬습니다. '나이'를 이유로 다른 대우를 받는 것은 헌법이 금지하는 어떤 행위와 관련이 있을까요?</li>
+            <li>일하는 사람이 정당한 보수를 받고 안전한 환경에서 근무할 수 있는 권리는 헌법의 어느 조항, 어떤 기본권에서 나올까요?</li>
+            <li>야간 근무를 강요하거나 해고를 협박하는 것은 세 가지 제한 사유(국가 안전보장·질서 유지·공공복리) 중 무엇을 위한 것인지 따져보세요. 아무것도 해당하지 않는다면 무엇을 의미할까요?</li>
+          </ul>
+          <div class="scaffold-keywords">
+            <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
+            <span class="kw-tag">헌법 제11조</span>
+            <span class="kw-tag">헌법 제32조</span>
+            <span class="kw-tag">나이를 이유로 한 차별</span>
+            <span class="kw-tag">근로 환경 보호</span>
+          </div>
+        </div>
+      </div>
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> 이 사례에서 관련된 기본권을 2가지 이상 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
-              <div class="rights-item"><div class="rights-item-num">①</div>
-                <textarea placeholder="예) 사회권(근로의 권리) — 정당한 임금을 받을 권리가 침해됨"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">①</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
-              <div class="rights-item"><div class="rights-item-num">②</div>
-                <textarea placeholder="예) 평등권 — 나이를 이유로 최저 임금 적용에서 차별 받음"></textarea>
-              </div>
-              <div class="rights-item"><div class="rights-item-num">③</div>
-                <textarea placeholder="추가 기본권이 있다면 써 보세요 (선택)"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">②</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
             </div>
-            <div class="limit-note"><textarea placeholder="이 사례의 권리 침해가 정당화될 수 있는지 판단해 보세요."></textarea></div>
+            <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
 
         <div class="analysis-block block-verdict">
-          <div class="analysis-block-header"><span class="block-icon">📋</span> 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
+          <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
             <div class="verdict-row">
               <button class="verdict-btn verdict-btn-protect" onclick="setVerdict(this)">✅ 보장</button>
               <button class="verdict-btn verdict-btn-violate" onclick="setVerdict(this)">❌ 침해</button>
             </div>
-            <div class="verdict-note"><textarea placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea></div>
+            <textarea rows="2" placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea>
           </div>
         </div>
       </div>
@@ -1055,14 +664,17 @@
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea placeholder="간단히 핵심만 정리해두세요!"></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
+          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ CASE 5 ═══ -->
+
+  <!-- ══════════════════════════════
+       CASE 5 · 안보 & 집회
+  ══════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">5<span>사례</span></div>
@@ -1080,44 +692,73 @@
         시민단체는 이 조치가 헌법상 집회의 자유를 침해한다고 반발하고 있습니다.
       </div>
 
+      <div class="scaffold-box">
+        <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
+        <div class="scaffold-content">
+          <ul class="scaffold-list">
+            <li>사람들이 함께 모여 의견을 나누고 주장을 펼칠 수 있는 권리는 자유권 중 어떤 종류에 해당할까요? 교과서에서 찾아보세요.</li>
+            <li>경찰이 내세운 이유들(교통 방해, 소음 피해, 충돌 우려)은 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당하나요? 하나씩 대입해 보세요.</li>
+            <li>경찰의 조치가 기본권 제한의 정당한 사유에 해당한다면 이것은 합법적인 제한일 수 있습니다. 반대로 아무 사유에도 해당하지 않거나 근거가 약하다면 어떻게 판단해야 할까요?</li>
+          </ul>
+          <div class="scaffold-keywords">
+            <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
+            <span class="kw-tag">헌법 제21조</span>
+            <span class="kw-tag">집회·결사</span>
+            <span class="kw-tag">질서 유지</span>
+            <span class="kw-tag">공공복리</span>
+          </div>
+        </div>
+      </div>
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> 이 사례에서 관련된 기본권을 2가지 이상 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
-              <div class="rights-item"><div class="rights-item-num">①</div>
-                <textarea placeholder="예) 자유권(집회·결사의 자유) — 국민이 자유롭게 모여 의사를 표현할 권리"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">①</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
-              <div class="rights-item"><div class="rights-item-num">②</div>
-                <textarea placeholder="예) 자유권(표현의 자유) — 집회를 통해 자신의 주장을 밝힐 자유도 함께 제한됨"></textarea>
-              </div>
-              <div class="rights-item"><div class="rights-item-num">③</div>
-                <textarea placeholder="추가 기본권이 있다면 써 보세요 (선택)"></textarea>
+              <div class="rights-item">
+                <div class="rights-item-num">②</div>
+                <div class="rights-item-inner">
+                  <div class="type-select">
+                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
+                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
+                  </div>
+                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
               <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
             </div>
-            <div class="limit-note"><textarea placeholder="질서 유지나 공공복리를 위한 제한이 과도한지 아닌지, 비례 원칙에 맞는지 판단해 보세요."></textarea></div>
+            <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
 
         <div class="analysis-block block-verdict">
-          <div class="analysis-block-header"><span class="block-icon">📋</span> 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
+          <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
             <div class="verdict-row">
               <button class="verdict-btn verdict-btn-protect" onclick="setVerdict(this)">✅ 보장</button>
               <button class="verdict-btn verdict-btn-violate" onclick="setVerdict(this)">❌ 침해</button>
             </div>
-            <div class="verdict-note"><textarea placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea></div>
+            <textarea rows="2" placeholder="판단 이유를 한 문장으로 정리해 보세요."></textarea>
           </div>
         </div>
       </div>
@@ -1125,14 +766,86 @@
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea placeholder="간단히 핵심만 정리해두세요!"></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
+          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
+
+  <!-- ══════════════════════════════
+       자기평가
+  ══════════════════════════════ -->
+  <div class="self-eval">
+    <div class="self-eval-header">
+      <span>🌟</span>
+      <h3>자기 평가 — 오늘 나의 학습을 돌아봐요</h3>
+    </div>
+    <div class="self-eval-body">
+
+      <div class="eval-row">
+        <div class="eval-question">
+          기본권의 종류(평등권·자유권·참정권·청구권·사회권)를 사례와 연결하여 구분할 수 있다.
+          <small>1 😕 잘 모르겠다 &nbsp;←→&nbsp; 5 😊 완벽히 이해했다</small>
+        </div>
+        <div class="star-row">
+          <button class="star-btn" onclick="rateStar(this)">1</button>
+          <button class="star-btn" onclick="rateStar(this)">2</button>
+          <button class="star-btn" onclick="rateStar(this)">3</button>
+          <button class="star-btn" onclick="rateStar(this)">4</button>
+          <button class="star-btn" onclick="rateStar(this)">5</button>
+        </div>
+      </div>
+
+      <hr class="eval-divider">
+
+      <div class="eval-row">
+        <div class="eval-question">
+          기본권 제한의 3가지 정당성 요소(국가 안전보장·질서 유지·공공복리)를 적용하여 판단할 수 있다.
+          <small>1 😕 잘 모르겠다 &nbsp;←→&nbsp; 5 😊 완벽히 이해했다</small>
+        </div>
+        <div class="star-row">
+          <button class="star-btn" onclick="rateStar(this)">1</button>
+          <button class="star-btn" onclick="rateStar(this)">2</button>
+          <button class="star-btn" onclick="rateStar(this)">3</button>
+          <button class="star-btn" onclick="rateStar(this)">4</button>
+          <button class="star-btn" onclick="rateStar(this)">5</button>
+        </div>
+      </div>
+
+      <hr class="eval-divider">
+
+      <div class="eval-row">
+        <div class="eval-question">
+          내가 맡은 사례를 모둠원에게 충분히 설명할 수 있다.
+          <small>1 😕 자신 없다 &nbsp;←→&nbsp; 5 😊 잘 설명할 수 있다</small>
+        </div>
+        <div class="star-row">
+          <button class="star-btn" onclick="rateStar(this)">1</button>
+          <button class="star-btn" onclick="rateStar(this)">2</button>
+          <button class="star-btn" onclick="rateStar(this)">3</button>
+          <button class="star-btn" onclick="rateStar(this)">4</button>
+          <button class="star-btn" onclick="rateStar(this)">5</button>
+        </div>
+      </div>
+
+      <hr class="eval-divider">
+
+      <div class="eval-comment">
+        <label>📝 오늘 수업에서 가장 어려웠던 점 또는 더 알고 싶은 것을 써 보세요.</label>
+        <textarea rows="3" placeholder="자유롭게 써 보세요."></textarea>
+      </div>
+
+      <div class="eval-comment">
+        <label>💬 오늘 수업에서 새롭게 알게 된 점을 한 문장으로 정리해 보세요.</label>
+        <textarea rows="2" placeholder="오늘 내가 배운 가장 중요한 한 가지는..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+
   <div class="footer-bar">
     <strong>헌법 제10조</strong> "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다."<br>
     <strong>헌법 제37조 ②항</strong> "국민의 모든 자유와 권리는 국가 안전보장·질서 유지·공공복리를 위하여 필요한 경우에 한하여 법률로써 제한할 수 있다."
@@ -1140,87 +853,146 @@
 
 </div><!-- /worksheet -->
 
+
 <script>
+  /* ── 체크박스 토글 ── */
   function toggleCheck(el) {
     el.classList.toggle('checked');
     const cb = el.querySelector('input[type="checkbox"]');
     if (cb) cb.checked = el.classList.contains('checked');
   }
 
+  /* ── 보장/침해 판단 버튼 ── */
   function setVerdict(btn) {
     const row = btn.closest('.verdict-row');
     row.querySelectorAll('.verdict-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   }
 
+  /* ── 침해/보장 타입 선택 ── */
+  function selectType(btn) {
+    const row = btn.closest('.type-select');
+    row.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  /* ── 스캐폴딩 힌트 토글 ── */
+  function toggleScaffold(btn) {
+    const content = btn.closest('.scaffold-box').querySelector('.scaffold-content');
+    content.classList.toggle('open');
+    btn.textContent = content.classList.contains('open') ? '▲ 접기' : '▼ 펼치기';
+  }
+
+  /* ── 별점 평가 ── */
+  function rateStar(btn) {
+    const row = btn.closest('.star-row');
+    const btns = Array.from(row.querySelectorAll('.star-btn'));
+    const idx = btns.indexOf(btn);
+    btns.forEach((b, i) => b.classList.toggle('lit', i <= idx));
+  }
+
+  /* ────────────────────────────────────────────────
+     이미지 저장 — 학생이 입력한 내용을 그대로 반영
+     textarea의 실제 value를 읽어 mirror div로 렌더링
+  ──────────────────────────────────────────────── */
   async function saveImage() {
     const sid   = document.getElementById('student-id').value.trim()   || '학번';
     const sname = document.getElementById('student-name').value.trim() || '이름';
     const filename = `기본권 사례 연습_${sid}_${sname}.png`;
 
-    const btn = document.getElementById('save-btn');
-    const origText = btn.textContent;
-    btn.textContent = '⏳ 저장 중...';
-    btn.disabled = true;
+    const saveBtn = document.getElementById('save-btn');
+    const origText = saveBtn.textContent;
+    saveBtn.textContent = '⏳ 저장 중...';
+    saveBtn.disabled = true;
 
-    // textarea 값을 div로 미러링 (html2canvas textarea 렌더 보정)
+    /* 1) 힌트 박스 숨기기 */
+    const scaffolds = document.querySelectorAll('.scaffold-box');
+    scaffolds.forEach(s => { s.dataset.prevDisplay = s.style.display; s.style.display = 'none'; });
+
+    /* 2) textarea → mirror div
+          - ta.value 가 있으면 학생이 입력한 값 사용
+          - 없으면 placeholder를 연한 색으로 표시           */
     const allTA = document.querySelectorAll('#worksheet textarea');
     const mirrors = [];
+
     allTA.forEach(ta => {
-      const div = document.createElement('div');
+      /* textarea 가 share-item 안에 있으면 색이 달라야 함 */
+      const inShareSection = !!ta.closest('.share-section');
       const cs = window.getComputedStyle(ta);
-      div.style.position   = 'absolute';
-      div.style.top        = ta.offsetTop + 'px';
-      div.style.left       = ta.offsetLeft + 'px';
-      div.style.width      = ta.offsetWidth + 'px';
-      div.style.minHeight  = ta.offsetHeight + 'px';
-      div.style.padding    = cs.padding;
-      div.style.font       = cs.font;
-      div.style.lineHeight = cs.lineHeight;
-      div.style.color      = ta.value ? cs.color : '#9ca3af';
-      div.style.background = cs.background;
-      div.style.border     = cs.border;
-      div.style.borderRadius = cs.borderRadius;
-      div.style.whiteSpace = 'pre-wrap';
-      div.style.wordBreak  = 'break-word';
-      div.style.boxSizing  = 'border-box';
-      div.style.zIndex     = '1';
-      div.textContent      = ta.value || ta.placeholder;
+
+      const mirror = document.createElement('div');
+      mirror.style.cssText = [
+        `position:absolute`,
+        `top:${ta.offsetTop}px`,
+        `left:${ta.offsetLeft}px`,
+        `width:${ta.offsetWidth}px`,
+        `min-height:${ta.offsetHeight}px`,
+        `padding:${cs.padding}`,
+        `font-family:${cs.fontFamily}`,
+        `font-size:${cs.fontSize}`,
+        `font-weight:${cs.fontWeight}`,
+        `line-height:${cs.lineHeight}`,
+        `border:${cs.border}`,
+        `border-radius:${cs.borderRadius}`,
+        `box-sizing:border-box`,
+        `white-space:pre-wrap`,
+        `word-break:break-word`,
+        `z-index:2`,
+        `pointer-events:none`
+      ].join(';');
+
+      if (ta.value.trim() !== '') {
+        /* 학생이 입력한 내용 */
+        mirror.style.color = inShareSection ? '#ffffff' : cs.color;
+        mirror.style.background = inShareSection ? 'transparent' : cs.backgroundColor;
+        mirror.textContent = ta.value;
+      } else {
+        /* placeholder 스타일 */
+        mirror.style.color = inShareSection ? 'rgba(255,255,255,0.38)' : '#aab4c8';
+        mirror.style.background = inShareSection ? 'transparent' : cs.backgroundColor;
+        mirror.textContent = ta.placeholder;
+      }
+
       ta.parentNode.style.position = 'relative';
-      ta.parentNode.appendChild(div);
+      ta.parentNode.appendChild(mirror);
       ta.style.opacity = '0';
-      mirrors.push({ div, ta });
+      mirrors.push({ mirror, ta });
     });
 
     try {
       const canvas = await html2canvas(document.getElementById('worksheet'), {
-        scale: 1.8,
+        scale: 2,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#e8eef7',
         logging: false,
         onclone: (cloned) => {
-          cloned.querySelectorAll('textarea').forEach(t => { t.style.opacity = '0'; });
+          /* 클론에서도 textarea 투명 처리 */
+          cloned.querySelectorAll('textarea').forEach(t => t.style.opacity = '0');
+          cloned.querySelectorAll('.scaffold-box').forEach(s => s.style.display = 'none');
         }
       });
 
-      mirrors.forEach(({ div, ta }) => {
-        ta.style.opacity = '';
-        div.remove();
-      });
+      /* 3) 복원 */
+      mirrors.forEach(({ mirror, ta }) => { ta.style.opacity = ''; mirror.remove(); });
+      scaffolds.forEach(s => { s.style.display = s.dataset.prevDisplay || ''; });
 
+      /* 4) 다운로드 */
       const link = document.createElement('a');
       link.download = filename;
       link.href = canvas.toDataURL('image/png');
       link.click();
 
-      btn.textContent = '✅ 저장 완료!';
-      setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2200);
-    } catch (e) {
-      mirrors.forEach(({ div, ta }) => { ta.style.opacity = ''; div.remove(); });
-      console.error(e);
-      btn.textContent = '❌ 오류 — 다시 시도';
-      setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2200);
+      saveBtn.textContent = '✅ 저장 완료!';
+      setTimeout(() => { saveBtn.textContent = origText; saveBtn.disabled = false; }, 2200);
+
+    } catch (err) {
+      /* 에러 시 복원 */
+      mirrors.forEach(({ mirror, ta }) => { ta.style.opacity = ''; mirror.remove(); });
+      scaffolds.forEach(s => { s.style.display = s.dataset.prevDisplay || ''; });
+      console.error(err);
+      saveBtn.textContent = '❌ 오류 — 다시 시도';
+      setTimeout(() => { saveBtn.textContent = origText; saveBtn.disabled = false; }, 2200);
     }
   }
 </script>

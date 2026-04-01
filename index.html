@@ -119,7 +119,7 @@
   .scaffold-content { display:none; margin-top:8px; }
   .scaffold-content.open { display:block; }
   .scaffold-list { list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:7px; }
-  .scaffold-list li { font-size:11.5px; color:#1a3f7a; line-height:1.7; padding-left:14px; position:relative; }
+  .scaffold-list li { font-size:11.5px; color:#1a3f7a; line-height:1.7; padding-left:18px; position:relative; }
   .scaffold-list li::before { content:'Q.'; position:absolute; left:0; color:#3a82d4; font-size:10px; font-weight:900; top:1px; }
   .scaffold-keywords { display:flex; flex-wrap:wrap; gap:5px; border-top:1px dashed #b8d4f5; padding-top:7px; margin-top:2px; }
   .scaffold-keywords-label { font-size:10px; font-weight:700; color:#3a82d4; width:100%; margin-bottom:2px; }
@@ -152,13 +152,112 @@
   textarea:focus { outline:none; border-color:var(--blue-light); background:var(--white); }
   textarea::placeholder { color:#aab4c8; font-size:11px; }
 
-  /* ── LIMIT CHECKS ── */
+  /* ──────────────────────────────────────
+     기본권 제한 체크박스 — 순수 CSS 방식
+     label > input[type=checkbox] hidden
+     커스텀 .cb-box 로 시각 표시
+  ────────────────────────────────────── */
   .limit-checks { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:7px; }
-  .limit-check-item { display:flex; align-items:center; gap:5px; background:var(--cream); border:1.5px solid var(--cream-dark); border-radius:20px; padding:4px 10px; cursor:pointer; transition:all 0.2s; font-size:12px; font-weight:700; color:var(--text-mid); user-select:none; }
-  .limit-check-item input[type="checkbox"] { display:none; }
-  .limit-check-item .check-box { width:15px; height:15px; border:2px solid var(--gray-mid); border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0; }
-  .limit-check-item.checked { background:var(--navy); border-color:var(--navy); color:var(--white); }
-  .limit-check-item.checked .check-box { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+
+  .limit-check-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--cream);
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-mid);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+  }
+
+  /* 실제 체크박스는 숨김 */
+  .limit-check-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  /* 커스텀 체크 박스 */
+  .cb-box {
+    width: 16px; height: 16px;
+    border: 2px solid var(--gray-mid);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; flex-shrink: 0;
+    background: var(--white);
+    transition: all 0.15s;
+    color: transparent; /* 체크 마크 기본 숨김 */
+    font-weight: 900;
+  }
+
+  /* 체크된 상태 — JS로 .checked 클래스 추가 */
+  .limit-check-item.checked {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
+  .limit-check-item.checked .cb-box {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  /* 정당하지 않음 항목 — 별도 빨간 계열 */
+  .limit-check-item.unjust {
+    background: #fff0f0;
+    border-color: #f5b8b8;
+    color: var(--red-accent);
+  }
+  .limit-check-item.unjust .cb-box {
+    border-color: #f5b8b8;
+  }
+  .limit-check-item.unjust.checked {
+    background: var(--red-accent);
+    border-color: var(--red-accent);
+    color: var(--white);
+  }
+  .limit-check-item.unjust.checked .cb-box {
+    background: #fff;
+    border-color: #fff;
+    color: var(--red-accent);
+  }
+
+  /* 구분선 */
+  .limit-checks-divider {
+    width: 100%;
+    border: none;
+    border-top: 1.5px dashed var(--gray-mid);
+    margin: 4px 0 2px;
+  }
+
+  /* ── 관점 안내 박스 (침해/보장 누구 입장?) ── */
+  .scaffold-perspective {
+    display: flex; flex-direction: column; gap: 5px;
+    margin-top: 8px;
+    border-top: 1px dashed #b8d4f5;
+    padding-top: 7px;
+  }
+  .persp-item {
+    display: flex; align-items: flex-start; gap: 7px;
+    border-radius: 7px; padding: 6px 10px;
+    font-size: 11.5px; line-height: 1.65;
+  }
+  .persp-item strong { font-weight: 900; }
+  .persp-item em { font-style: normal; font-weight: 900; text-decoration: underline; text-underline-offset: 2px; }
+  .persp-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .persp-violate {
+    background: #fff2f2; border: 1px solid #f5c0c0; color: #7a1a1a;
+  }
+  .persp-protect {
+    background: #f0fef4; border: 1px solid #a0dcb4; color: #174d2a;
+  }
 
   /* ── VERDICT ── */
   .verdict-row { display:flex; gap:8px; margin-bottom:7px; }
@@ -249,7 +348,7 @@
     <div class="rights-pills">
       <div class="pill pill-equality"><div class="pill-dot"></div>평등권 — 차별받지 않을 권리 (헌법 제11조)</div>
       <div class="pill pill-freedom"><div class="pill-dot"></div>자유권 — 간섭받지 않을 자유 (제12~22조)</div>
-      <div class="pill pill-voting"><div class="pill-dot"></div>참정권 — 정치에 참여할 권리 (선거권·공무담임권·국민투표권)</div>
+      <div class="pill pill-voting"><div class="pill-dot"></div>참정권 — 선거권·공무담임권·국민투표권</div>
       <div class="pill pill-claim"><div class="pill-dot"></div>청구권 — 국가에 요청할 권리 (제26~29조)</div>
       <div class="pill pill-social"><div class="pill-dot"></div>사회권 — 인간다운 삶을 누릴 권리 (제31~36조)</div>
       <div class="pill pill-art10"><div class="pill-dot"></div>헌법 제10조 — 인간의 존엄과 행복추구권</div>
@@ -265,9 +364,10 @@
   </div>
 
 
-  <!-- ══════════════════════════════
-       CASE 1 · 교육 현장
-  ══════════════════════════════ -->
+  <!-- ══════════════════════════════════════════
+       CASE 1 · 기본권 침해 사례
+       — 장애 학생 시험 편의 제공 거부
+  ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">1<span>사례</span></div>
@@ -290,14 +390,22 @@
           <ul class="scaffold-list">
             <li>학교는 "모두에게 동일한 조건"을 적용했다고 했습니다. 그런데 장애가 있는 태양이에게 '동일한 조건'이 과연 공평한 것일까요?</li>
             <li>태양이가 시험에 응시하지 못했다면, 앞으로 학교에 다니면서 무엇을 할 수 없게 되는 건가요?</li>
-            <li>학교의 이 결정이 국가와 사회 전체를 위해 꼭 필요한 이유가 있을까요? 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당하는지 생각해 보세요.</li>
+            <li>학교의 이 결정이 국가 안전보장, 질서 유지, 공공복리 중 무엇을 위한 것인지 따져보세요. 아무것도 해당하지 않는다면 무엇을 의미할까요?</li>
           </ul>
           <div class="scaffold-keywords">
             <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
-            <span class="kw-tag">헌법 제11조</span>
-            <span class="kw-tag">헌법 제31조</span>
-            <span class="kw-tag">장애를 이유로 한 차별</span>
-            <span class="kw-tag">교육의 기회</span>
+            <span class="kw-tag">헌법 제11조</span><span class="kw-tag">헌법 제31조</span>
+            <span class="kw-tag">장애를 이유로 한 차별</span><span class="kw-tag">교육의 기회</span>
+          </div>
+          <div class="scaffold-perspective">
+            <div class="persp-item persp-violate">
+              <span class="persp-icon">❌</span>
+              <span><strong>침해된 기본권</strong>을 쓸 때는 → <em>태양이 입장</em>에서 어떤 권리를 빼앗겼는지 생각해 보세요.</span>
+            </div>
+            <div class="persp-item persp-protect">
+              <span class="persp-icon">✅</span>
+              <span><strong>보장된 기본권</strong>을 쓸 때는 → 이 사례에서 누군가의 권리가 오히려 지켜진 면이 있는지 생각해 보세요.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -330,19 +438,31 @@
             </div>
           </div>
         </div>
-
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 해당하는 이유에 체크하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
+              <label class="limit-check-item" id="c1a">
+                <input type="checkbox" onchange="syncCheck('c1a')">
+                <span class="cb-box">✓</span>🛡️ 국가 안전보장
+              </label>
+              <label class="limit-check-item" id="c1b">
+                <input type="checkbox" onchange="syncCheck('c1b')">
+                <span class="cb-box">✓</span>🚦 질서 유지
+              </label>
+              <label class="limit-check-item" id="c1c">
+                <input type="checkbox" onchange="syncCheck('c1c')">
+                <span class="cb-box">✓</span>🌏 공공복리
+              </label>
+              <hr class="limit-checks-divider">
+              <label class="limit-check-item unjust" id="c1d">
+                <input type="checkbox" onchange="syncCheck('c1d')">
+                <span class="cb-box">✓</span>❌ 정당하지 않음
+              </label>
             </div>
             <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
-
         <div class="analysis-block block-verdict">
           <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
@@ -354,7 +474,6 @@
           </div>
         </div>
       </div>
-
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
@@ -366,39 +485,49 @@
   </div>
 
 
-  <!-- ══════════════════════════════
-       CASE 2 · SNS & 표현
-  ══════════════════════════════ -->
+  <!-- ══════════════════════════════════════════
+       CASE 2 · 정당한 기본권 제한 사례
+       — 감염병 예방을 위한 격리 조치
+  ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">2<span>사례</span></div>
       <div class="case-header-content">
-        <div class="case-label">Case 02 · SNS &amp; 표현</div>
-        <div class="case-title">정부 정책 비판 게시물 삭제 명령</div>
+        <div class="case-label">Case 02 · 보건 &amp; 공공안전</div>
+        <div class="case-title">감염병 확산 방지를 위한 격리 조치</div>
       </div>
     </div>
     <div class="case-body">
       <div class="case-scenario">
-        고등학생 다율이는 SNS에 <strong>"이번 교육부 정책은 학생들의 의견을 무시한 결정"</strong>이라는 글을 올렸습니다.
-        이를 본 담당 기관은 "사회 혼란을 초래할 수 있다"는 이유로 게시물 삭제 명령과 함께
-        향후 유사한 내용 게시를 금지하겠다고 통보했습니다.
-        다율이는 자신의 의견을 표현할 권리가 있다고 주장하고 있습니다.
+        고등학생 다율이는 해외여행에서 돌아온 뒤 고열과 기침 증상이 생겼습니다.
+        보건 당국은 감염병 예방법에 따라 다율이에게 <strong>2주간 자가격리를 명령</strong>하고,
+        격리 기간에는 외출을 금지하며 매일 건강 상태를 보고하도록 했습니다.
+        다율이는 불편하지만 보건 당국의 조치를 따랐고,
+        덕분에 주변 사람들은 감염으로부터 보호받을 수 있었습니다.
       </div>
 
       <div class="scaffold-box">
         <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
         <div class="scaffold-content">
           <ul class="scaffold-list">
-            <li>국가가 허락하지 않으면 자신의 생각을 말하거나 쓸 수 없다면, 국민의 어떤 자유가 침해되는 걸까요?</li>
-            <li>다율이가 SNS에 쓴 내용은 정부에 대한 의견입니다. 국민이 정부나 공공기관의 정책을 비판하는 것은 민주주의에서 허용되어야 할까요, 금지되어야 할까요?</li>
-            <li>기관이 내세운 이유인 "사회 혼란"은 국가 안전보장, 질서 유지, 공공복리 중 어디에 가장 가까울까요? 단순한 정부 비판 글이 정말 그 기준에 해당하는지 생각해 보세요.</li>
+            <li>자가격리는 다율이의 어떤 자유를 제한하는 것인가요? 헌법 제12~22조 중에서 찾아보세요.</li>
+            <li>이 조치는 다율이 한 사람만을 위한 것인가요, 아니면 사회 전체를 위한 것인가요? 그렇다면 기본권 제한의 3가지 사유 중 어디에 해당할까요?</li>
+            <li>법률에 근거한 이 조치가 '정당한 제한'인지, 아니면 '부당한 침해'인지 판단해 보세요. 어떤 차이가 있나요?</li>
           </ul>
           <div class="scaffold-keywords">
             <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
-            <span class="kw-tag">헌법 제21조</span>
-            <span class="kw-tag">헌법 제10조</span>
-            <span class="kw-tag">생각·표현의 자유</span>
-            <span class="kw-tag">질서 유지</span>
+            <span class="kw-tag">헌법 제12조</span><span class="kw-tag">헌법 제14조</span>
+            <span class="kw-tag">공공복리</span><span class="kw-tag">기본권의 정당한 제한</span>
+          </div>
+          <div class="scaffold-perspective">
+            <div class="persp-item persp-violate">
+              <span class="persp-icon">❌</span>
+              <span><strong>침해(제한)된 기본권</strong>을 쓸 때는 → <em>다율이 입장</em>에서 격리로 인해 어떤 자유가 제한되었는지 생각해 보세요.</span>
+            </div>
+            <div class="persp-item persp-protect">
+              <span class="persp-icon">✅</span>
+              <span><strong>보장된 기본권</strong>을 쓸 때는 → <em>다율이 주변 사람들(사회 전체) 입장</em>에서 무엇이 지켜졌는지 생각해 보세요.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -431,19 +560,31 @@
             </div>
           </div>
         </div>
-
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 해당하는 이유에 체크하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
+              <label class="limit-check-item" id="c2a">
+                <input type="checkbox" onchange="syncCheck('c2a')">
+                <span class="cb-box">✓</span>🛡️ 국가 안전보장
+              </label>
+              <label class="limit-check-item" id="c2b">
+                <input type="checkbox" onchange="syncCheck('c2b')">
+                <span class="cb-box">✓</span>🚦 질서 유지
+              </label>
+              <label class="limit-check-item" id="c2c">
+                <input type="checkbox" onchange="syncCheck('c2c')">
+                <span class="cb-box">✓</span>🌏 공공복리
+              </label>
+              <hr class="limit-checks-divider">
+              <label class="limit-check-item unjust" id="c2d">
+                <input type="checkbox" onchange="syncCheck('c2d')">
+                <span class="cb-box">✓</span>❌ 정당하지 않음
+              </label>
             </div>
             <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
-
         <div class="analysis-block block-verdict">
           <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
@@ -455,7 +596,6 @@
           </div>
         </div>
       </div>
-
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
@@ -467,16 +607,16 @@
   </div>
 
 
-  <!-- ══════════════════════════════
-       CASE 3 · 선거 & 참정권
-       (선거권 / 공무담임권 / 국민투표권)
-  ══════════════════════════════ -->
+  <!-- ══════════════════════════════════════════
+       CASE 3 · 참정권 사례
+       — 선거권 / 국민투표권 / 공무담임권
+  ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">3<span>사례</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 03 · 선거 &amp; 참정</div>
-        <div class="case-title">선거일 투표 참여와 주민 투표 거부 논란</div>
+        <div class="case-title">선거일 투표 참여와 주민 투표·공무원 채용 거부 논란</div>
       </div>
     </div>
     <div class="case-body">
@@ -493,15 +633,23 @@
         <div class="scaffold-content">
           <ul class="scaffold-list">
             <li>도훈이는 대통령 선거에서 투표했습니다. 국민이 선거에서 투표할 수 있는 권리를 무엇이라고 배웠나요?</li>
-            <li>주민 투표는 국민이 직접 나라의 중요한 결정에 참여하는 방식입니다. 헌법에서 배운 참정권 중 이것과 관련된 권리는 무엇일까요?</li>
-            <li>삼촌이 지원한 공무원은 국가·지방자치단체의 일을 맡는 직책입니다. 국민이 이런 자리에 지원할 수 있는 권리를 무엇이라고 하나요? 정당원이라는 이유로 거부당한 것은 어떤 문제일까요?</li>
+            <li>국가나 지방자치단체의 중요한 결정을 국민이 직접 투표로 결정하는 것을 '국민투표'라고 합니다. 이것과 관련된 참정권의 이름은 무엇인가요?</li>
+            <li>삼촌이 지원한 공무원은 나라의 일을 맡는 자리입니다. 이런 자리에 지원할 수 있는 권리를 무엇이라고 하나요? 정당원이라는 이유로 거부당한 것은 이 권리와 어떤 관계가 있을까요?</li>
           </ul>
           <div class="scaffold-keywords">
             <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
-            <span class="kw-tag">선거권</span>
-            <span class="kw-tag">국민투표권</span>
-            <span class="kw-tag">공무담임권</span>
-            <span class="kw-tag">참정권</span>
+            <span class="kw-tag">선거권</span><span class="kw-tag">국민투표권</span>
+            <span class="kw-tag">공무담임권</span><span class="kw-tag">참정권</span>
+          </div>
+          <div class="scaffold-perspective">
+            <div class="persp-item persp-violate">
+              <span class="persp-icon">❌</span>
+              <span><strong>침해된 기본권</strong>을 쓸 때는 → <em>도훈이(주민 투표 막힘) 또는 삼촌(채용 거부) 입장</em>에서 어떤 참정권을 빼앗겼는지 생각해 보세요.</span>
+            </div>
+            <div class="persp-item persp-protect">
+              <span class="persp-icon">✅</span>
+              <span><strong>보장된 기본권</strong>을 쓸 때는 → <em>도훈이(대통령 선거 투표) 입장</em>에서 제대로 행사한 권리가 무엇인지 생각해 보세요.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -534,19 +682,31 @@
             </div>
           </div>
         </div>
-
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 해당하는 이유에 체크하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
+              <label class="limit-check-item" id="c3a">
+                <input type="checkbox" onchange="syncCheck('c3a')">
+                <span class="cb-box">✓</span>🛡️ 국가 안전보장
+              </label>
+              <label class="limit-check-item" id="c3b">
+                <input type="checkbox" onchange="syncCheck('c3b')">
+                <span class="cb-box">✓</span>🚦 질서 유지
+              </label>
+              <label class="limit-check-item" id="c3c">
+                <input type="checkbox" onchange="syncCheck('c3c')">
+                <span class="cb-box">✓</span>🌏 공공복리
+              </label>
+              <hr class="limit-checks-divider">
+              <label class="limit-check-item unjust" id="c3d">
+                <input type="checkbox" onchange="syncCheck('c3d')">
+                <span class="cb-box">✓</span>❌ 정당하지 않음
+              </label>
             </div>
             <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
-
         <div class="analysis-block block-verdict">
           <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
@@ -558,7 +718,6 @@
           </div>
         </div>
       </div>
-
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
@@ -570,9 +729,10 @@
   </div>
 
 
-  <!-- ══════════════════════════════
-       CASE 4 · 노동 & 생활
-  ══════════════════════════════ -->
+  <!-- ══════════════════════════════════════════
+       CASE 4 · 기본권 침해 사례
+       — 최저 임금 미지급 & 야간 근무 강요
+  ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">4<span>사례</span></div>
@@ -595,15 +755,19 @@
         <div class="scaffold-content">
           <ul class="scaffold-list">
             <li>사장님은 세빈이가 어리다는 이유로 최저 임금보다 낮은 돈을 줬습니다. '나이'를 이유로 다른 대우를 받는 것은 헌법이 금지하는 어떤 행위와 관련이 있을까요?</li>
-            <li>일하는 사람이 정당한 보수를 받고 안전한 환경에서 근무할 수 있는 권리는 헌법의 어느 조항, 어떤 기본권에서 나올까요?</li>
-            <li>야간 근무를 강요하거나 해고를 협박하는 것은 세 가지 제한 사유(국가 안전보장·질서 유지·공공복리) 중 무엇을 위한 것인지 따져보세요. 아무것도 해당하지 않는다면 무엇을 의미할까요?</li>
+            <li>일하는 사람이 정당한 보수를 받고 안전한 환경에서 일할 수 있는 권리는 헌법의 어느 조항, 어떤 기본권에서 나올까요?</li>
+            <li>사장님의 행동이 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당하는지 따져보세요. 아무것도 해당하지 않는다면 이건 무엇을 의미할까요?</li>
           </ul>
           <div class="scaffold-keywords">
             <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
-            <span class="kw-tag">헌법 제11조</span>
-            <span class="kw-tag">헌법 제32조</span>
-            <span class="kw-tag">나이를 이유로 한 차별</span>
-            <span class="kw-tag">근로 환경 보호</span>
+            <span class="kw-tag">헌법 제11조</span><span class="kw-tag">헌법 제32조</span>
+            <span class="kw-tag">나이를 이유로 한 차별</span><span class="kw-tag">근로 환경 보호</span>
+          </div>
+          <div class="scaffold-perspective">
+            <div class="persp-item persp-violate">
+              <span class="persp-icon">❌</span>
+              <span><strong>침해된 기본권</strong>을 쓸 때는 → <em>세빈이 입장</em>에서 사장님의 행동으로 인해 어떤 권리를 빼앗겼는지 생각해 보세요. 이 사례에서는 침해된 기본권 2가지를 찾아보세요.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -636,19 +800,31 @@
             </div>
           </div>
         </div>
-
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 해당하는 이유에 체크하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
+              <label class="limit-check-item" id="c4a">
+                <input type="checkbox" onchange="syncCheck('c4a')">
+                <span class="cb-box">✓</span>🛡️ 국가 안전보장
+              </label>
+              <label class="limit-check-item" id="c4b">
+                <input type="checkbox" onchange="syncCheck('c4b')">
+                <span class="cb-box">✓</span>🚦 질서 유지
+              </label>
+              <label class="limit-check-item" id="c4c">
+                <input type="checkbox" onchange="syncCheck('c4c')">
+                <span class="cb-box">✓</span>🌏 공공복리
+              </label>
+              <hr class="limit-checks-divider">
+              <label class="limit-check-item unjust" id="c4d">
+                <input type="checkbox" onchange="syncCheck('c4d')">
+                <span class="cb-box">✓</span>❌ 정당하지 않음
+              </label>
             </div>
             <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
-
         <div class="analysis-block block-verdict">
           <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
@@ -660,7 +836,6 @@
           </div>
         </div>
       </div>
-
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
@@ -672,40 +847,49 @@
   </div>
 
 
-  <!-- ══════════════════════════════
-       CASE 5 · 안보 & 집회
-  ══════════════════════════════ -->
+  <!-- ══════════════════════════════════════════
+       CASE 5 · 정당한 기본권 제한 사례
+       — 군사시설 보호구역 내 사유지 이용 제한
+  ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">5<span>사례</span></div>
       <div class="case-header-content">
-        <div class="case-label">Case 05 · 안보 &amp; 집회</div>
-        <div class="case-title">야간 집회 금지 조치와 표현의 자유</div>
+        <div class="case-label">Case 05 · 안보 &amp; 재산권</div>
+        <div class="case-title">군사시설 보호구역 내 건물 신축 제한</div>
       </div>
     </div>
     <div class="case-body">
       <div class="case-scenario">
-        시민단체가 광화문 광장에서 <strong>야간 촛불 집회</strong>를 신청했습니다.
-        경찰은 "야간 집회는 교통 방해와 소음으로 인근 주민 피해가 크고,
-        최근 유사 집회에서 충돌이 발생한 사례가 있다"며
-        <strong>일몰 이후 집회를 금지</strong>하는 조치를 내렸습니다.
-        시민단체는 이 조치가 헌법상 집회의 자유를 침해한다고 반발하고 있습니다.
+        농부 하준이의 아버지는 군부대 인근 지역에 땅을 오래전부터 소유하고 있었습니다.
+        아버지는 그 땅에 창고를 새로 짓고 싶었지만, 군사시설 보호법에 따라
+        <strong>군사시설 보호구역 내에서는 새 건물을 지을 수 없다</strong>는 통보를 받았습니다.
+        아버지는 "내 땅인데 왜 마음대로 못 짓느냐"며 강하게 반발했지만,
+        담당 공무원은 <strong>국가 안보를 위해 법률로 정한 제한</strong>이라고 설명했습니다.
       </div>
 
       <div class="scaffold-box">
         <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
         <div class="scaffold-content">
           <ul class="scaffold-list">
-            <li>사람들이 함께 모여 의견을 나누고 주장을 펼칠 수 있는 권리는 자유권 중 어떤 종류에 해당할까요? 교과서에서 찾아보세요.</li>
-            <li>경찰이 내세운 이유들(교통 방해, 소음 피해, 충돌 우려)은 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당하나요? 하나씩 대입해 보세요.</li>
-            <li>경찰의 조치가 기본권 제한의 정당한 사유에 해당한다면 이것은 합법적인 제한일 수 있습니다. 반대로 아무 사유에도 해당하지 않거나 근거가 약하다면 어떻게 판단해야 할까요?</li>
+            <li>자신의 재산을 자유롭게 사용하고 이익을 얻을 수 있는 권리를 재산권이라고 합니다. 이것은 자유권의 한 종류인데, 이 사례에서 어떻게 제한되고 있나요?</li>
+            <li>군사시설 보호구역 근처에 건물을 짓는 것을 제한하는 이유는 무엇일까요? 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당하는지 생각해 보세요.</li>
+            <li>법률로 정해진 이 제한은 '정당한 제한'일까요, 아니면 '부당한 침해'일까요? 기본권 제한의 요소에 비춰 판단해 보세요.</li>
           </ul>
           <div class="scaffold-keywords">
             <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
-            <span class="kw-tag">헌법 제21조</span>
-            <span class="kw-tag">집회·결사</span>
-            <span class="kw-tag">질서 유지</span>
-            <span class="kw-tag">공공복리</span>
+            <span class="kw-tag">헌법 제23조(재산권)</span><span class="kw-tag">자유권</span>
+            <span class="kw-tag">국가 안전보장</span><span class="kw-tag">기본권의 정당한 제한</span>
+          </div>
+          <div class="scaffold-perspective">
+            <div class="persp-item persp-violate">
+              <span class="persp-icon">❌</span>
+              <span><strong>침해(제한)된 기본권</strong>을 쓸 때는 → <em>아버지 입장</em>에서 건물을 짓지 못하게 됨으로써 어떤 권리가 제한되었는지 생각해 보세요.</span>
+            </div>
+            <div class="persp-item persp-protect">
+              <span class="persp-icon">✅</span>
+              <span><strong>보장된 기본권</strong>을 쓸 때는 → <em>국민 전체 입장</em>에서 군사 보호구역 유지로 지켜지는 것이 무엇인지 생각해 보세요.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -738,19 +922,31 @@
             </div>
           </div>
         </div>
-
         <div class="analysis-block block-limit">
-          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 3가지 요소를 확인하세요</div>
+          <div class="analysis-block-header"><span class="block-icon">⚖️</span> ② 기본권 제한이 정당한가요? — 해당하는 이유에 체크하세요</div>
           <div class="analysis-block-body">
             <div class="limit-checks">
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🛡️ 국가 안전보장</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🚦 질서 유지</label>
-              <label class="limit-check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="check-box">✓</span>🌏 공공복리</label>
+              <label class="limit-check-item" id="c5a">
+                <input type="checkbox" onchange="syncCheck('c5a')">
+                <span class="cb-box">✓</span>🛡️ 국가 안전보장
+              </label>
+              <label class="limit-check-item" id="c5b">
+                <input type="checkbox" onchange="syncCheck('c5b')">
+                <span class="cb-box">✓</span>🚦 질서 유지
+              </label>
+              <label class="limit-check-item" id="c5c">
+                <input type="checkbox" onchange="syncCheck('c5c')">
+                <span class="cb-box">✓</span>🌏 공공복리
+              </label>
+              <hr class="limit-checks-divider">
+              <label class="limit-check-item unjust" id="c5d">
+                <input type="checkbox" onchange="syncCheck('c5d')">
+                <span class="cb-box">✓</span>❌ 정당하지 않음
+              </label>
             </div>
             <textarea rows="2" placeholder="해당 요소에 체크하고, 이 제한이 정당한지 이유를 써 보세요."></textarea>
           </div>
         </div>
-
         <div class="analysis-block block-verdict">
           <div class="analysis-block-header"><span class="block-icon">📋</span> ③ 최종 판단 — 기본권이 보장되었나요, 침해되었나요?</div>
           <div class="analysis-block-body">
@@ -762,7 +958,6 @@
           </div>
         </div>
       </div>
-
       <div class="share-section">
         <div class="share-title">🗣️ 모둠 공유 메모</div>
         <div class="share-grid">
@@ -833,13 +1028,8 @@
       <hr class="eval-divider">
 
       <div class="eval-comment">
-        <label>📝 오늘 수업에서 가장 어려웠던 점 또는 더 알고 싶은 것을 써 보세요.</label>
-        <textarea rows="3" placeholder="자유롭게 써 보세요."></textarea>
-      </div>
-
-      <div class="eval-comment">
-        <label>💬 오늘 수업에서 새롭게 알게 된 점을 한 문장으로 정리해 보세요.</label>
-        <textarea rows="2" placeholder="오늘 내가 배운 가장 중요한 한 가지는..."></textarea>
+        <label>✏️ 오늘 수업에서 느낀 점이나 새롭게 알게 된 점, 더 궁금한 점을 자유롭게 써 보세요.</label>
+        <textarea rows="4" placeholder="자유롭게 써 보세요."></textarea>
       </div>
 
     </div>
@@ -855,11 +1045,15 @@
 
 
 <script>
-  /* ── 체크박스 토글 ── */
-  function toggleCheck(el) {
-    el.classList.toggle('checked');
-    const cb = el.querySelector('input[type="checkbox"]');
-    if (cb) cb.checked = el.classList.contains('checked');
+  /* ────────────────────────────────────────────
+     체크박스: input의 change 이벤트로 label에
+     .checked 클래스를 추가/제거 → 시각 반영
+     (label onclick과 input change의 이중 발화 없음)
+  ──────────────────────────────────────────── */
+  function syncCheck(labelId) {
+    const label = document.getElementById(labelId);
+    const cb    = label.querySelector('input[type="checkbox"]');
+    label.classList.toggle('checked', cb.checked);
   }
 
   /* ── 보장/침해 판단 버튼 ── */
@@ -885,78 +1079,65 @@
 
   /* ── 별점 평가 ── */
   function rateStar(btn) {
-    const row = btn.closest('.star-row');
+    const row  = btn.closest('.star-row');
     const btns = Array.from(row.querySelectorAll('.star-btn'));
-    const idx = btns.indexOf(btn);
+    const idx  = btns.indexOf(btn);
     btns.forEach((b, i) => b.classList.toggle('lit', i <= idx));
   }
 
-  /* ────────────────────────────────────────────────
-     이미지 저장 — 학생이 입력한 내용을 그대로 반영
-     textarea의 실제 value를 읽어 mirror div로 렌더링
-  ──────────────────────────────────────────────── */
+  /* ────────────────────────────────────────────
+     이미지 저장
+     - textarea.value 로 학생 입력 내용 반영
+     - 체크박스 .checked 클래스 / 버튼 .active 클래스
+       는 이미 DOM에 반영되어 있으므로 html2canvas가
+       그대로 캡처함
+  ──────────────────────────────────────────── */
   async function saveImage() {
-    const sid   = document.getElementById('student-id').value.trim()   || '학번';
-    const sname = document.getElementById('student-name').value.trim() || '이름';
+    const sid    = document.getElementById('student-id').value.trim()   || '학번';
+    const sname  = document.getElementById('student-name').value.trim() || '이름';
     const filename = `기본권 사례 연습_${sid}_${sname}.png`;
 
-    const saveBtn = document.getElementById('save-btn');
-    const origText = saveBtn.textContent;
+    const saveBtn   = document.getElementById('save-btn');
+    const origText  = saveBtn.textContent;
     saveBtn.textContent = '⏳ 저장 중...';
-    saveBtn.disabled = true;
+    saveBtn.disabled    = true;
 
     /* 1) 힌트 박스 숨기기 */
     const scaffolds = document.querySelectorAll('.scaffold-box');
-    scaffolds.forEach(s => { s.dataset.prevDisplay = s.style.display; s.style.display = 'none'; });
+    scaffolds.forEach(s => { s.dataset.pd = s.style.display; s.style.display = 'none'; });
 
-    /* 2) textarea → mirror div
-          - ta.value 가 있으면 학생이 입력한 값 사용
-          - 없으면 placeholder를 연한 색으로 표시           */
-    const allTA = document.querySelectorAll('#worksheet textarea');
+    /* 2) textarea → mirror div (학생이 쓴 값 반영) */
+    const allTA   = document.querySelectorAll('#worksheet textarea');
     const mirrors = [];
 
     allTA.forEach(ta => {
-      /* textarea 가 share-item 안에 있으면 색이 달라야 함 */
-      const inShareSection = !!ta.closest('.share-section');
-      const cs = window.getComputedStyle(ta);
+      const inShare = !!ta.closest('.share-section');
+      const cs      = window.getComputedStyle(ta);
 
-      const mirror = document.createElement('div');
-      mirror.style.cssText = [
-        `position:absolute`,
-        `top:${ta.offsetTop}px`,
-        `left:${ta.offsetLeft}px`,
-        `width:${ta.offsetWidth}px`,
-        `min-height:${ta.offsetHeight}px`,
-        `padding:${cs.padding}`,
-        `font-family:${cs.fontFamily}`,
-        `font-size:${cs.fontSize}`,
-        `font-weight:${cs.fontWeight}`,
-        `line-height:${cs.lineHeight}`,
-        `border:${cs.border}`,
-        `border-radius:${cs.borderRadius}`,
-        `box-sizing:border-box`,
-        `white-space:pre-wrap`,
-        `word-break:break-word`,
-        `z-index:2`,
-        `pointer-events:none`
-      ].join(';');
+      const m = document.createElement('div');
+      m.style.cssText = `
+        position:absolute;
+        top:${ta.offsetTop}px; left:${ta.offsetLeft}px;
+        width:${ta.offsetWidth}px; min-height:${ta.offsetHeight}px;
+        padding:${cs.padding};
+        font-family:${cs.fontFamily}; font-size:${cs.fontSize};
+        font-weight:${cs.fontWeight}; line-height:${cs.lineHeight};
+        border:${cs.border}; border-radius:${cs.borderRadius};
+        box-sizing:border-box; white-space:pre-wrap;
+        word-break:break-word; z-index:2; pointer-events:none;
+        background:${inShare ? 'transparent' : cs.backgroundColor};
+      `;
 
-      if (ta.value.trim() !== '') {
-        /* 학생이 입력한 내용 */
-        mirror.style.color = inShareSection ? '#ffffff' : cs.color;
-        mirror.style.background = inShareSection ? 'transparent' : cs.backgroundColor;
-        mirror.textContent = ta.value;
-      } else {
-        /* placeholder 스타일 */
-        mirror.style.color = inShareSection ? 'rgba(255,255,255,0.38)' : '#aab4c8';
-        mirror.style.background = inShareSection ? 'transparent' : cs.backgroundColor;
-        mirror.textContent = ta.placeholder;
-      }
+      const hasValue = ta.value.trim() !== '';
+      m.style.color  = hasValue
+        ? (inShare ? '#ffffff' : cs.color)
+        : (inShare ? 'rgba(255,255,255,0.38)' : '#aab4c8');
+      m.textContent  = hasValue ? ta.value : ta.placeholder;
 
       ta.parentNode.style.position = 'relative';
-      ta.parentNode.appendChild(mirror);
+      ta.parentNode.appendChild(m);
       ta.style.opacity = '0';
-      mirrors.push({ mirror, ta });
+      mirrors.push({ m, ta });
     });
 
     try {
@@ -966,18 +1147,17 @@
         allowTaint: true,
         backgroundColor: '#e8eef7',
         logging: false,
-        onclone: (cloned) => {
-          /* 클론에서도 textarea 투명 처리 */
+        onclone: cloned => {
           cloned.querySelectorAll('textarea').forEach(t => t.style.opacity = '0');
           cloned.querySelectorAll('.scaffold-box').forEach(s => s.style.display = 'none');
         }
       });
 
-      /* 3) 복원 */
-      mirrors.forEach(({ mirror, ta }) => { ta.style.opacity = ''; mirror.remove(); });
-      scaffolds.forEach(s => { s.style.display = s.dataset.prevDisplay || ''; });
+      /* 복원 */
+      mirrors.forEach(({ m, ta }) => { ta.style.opacity = ''; m.remove(); });
+      scaffolds.forEach(s => { s.style.display = s.dataset.pd || ''; });
 
-      /* 4) 다운로드 */
+      /* 다운로드 */
       const link = document.createElement('a');
       link.download = filename;
       link.href = canvas.toDataURL('image/png');
@@ -987,9 +1167,8 @@
       setTimeout(() => { saveBtn.textContent = origText; saveBtn.disabled = false; }, 2200);
 
     } catch (err) {
-      /* 에러 시 복원 */
-      mirrors.forEach(({ mirror, ta }) => { ta.style.opacity = ''; mirror.remove(); });
-      scaffolds.forEach(s => { s.style.display = s.dataset.prevDisplay || ''; });
+      mirrors.forEach(({ m, ta }) => { ta.style.opacity = ''; m.remove(); });
+      scaffolds.forEach(s => { s.style.display = s.dataset.pd || ''; });
       console.error(err);
       saveBtn.textContent = '❌ 오류 — 다시 시도';
       setTimeout(() => { saveBtn.textContent = origText; saveBtn.disabled = false; }, 2200);

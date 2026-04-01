@@ -93,11 +93,87 @@
   .pill-social   { background:#f3eeff; color:#5b3fa0; border-color:#b09ad8; } .pill-social   .pill-dot { background:#5b3fa0; }
   .pill-art10    { background:#fff0f6; color:#a02060; border-color:#d888b0; } .pill-art10    .pill-dot { background:#a02060; }
 
-  /* ── JIGSAW INFO ── */
-  .jigsaw-info { background:linear-gradient(90deg,#f0f4ff,#e8f0fb); border:1.5px solid #b8cef0; border-radius:10px; padding:12px 16px; margin-bottom:18px; display:flex; align-items:flex-start; gap:10px; }
-  .jigsaw-icon { font-size:22px; flex-shrink:0; }
-  .jigsaw-text { font-size:12px; color:var(--navy); line-height:1.7; }
-  .jigsaw-text strong { font-weight:900; color:var(--blue); }
+  /* ── JIGSAW PANEL ── */
+  .jigsaw-panel {
+    background: var(--white); border-radius: 12px;
+    margin-bottom: 18px; box-shadow: var(--shadow-sm);
+    overflow: hidden; border: 1.5px solid #b8cef0;
+  }
+  .jigsaw-top {
+    background: linear-gradient(90deg, #f0f4ff, #e8f0fb);
+    padding: 12px 16px; display: flex; align-items: flex-start;
+    gap: 14px; flex-wrap: wrap;
+    border-bottom: 1.5px solid #b8cef0;
+  }
+  .jigsaw-desc {
+    display: flex; align-items: flex-start; gap: 10px; flex: 1; min-width: 200px;
+  }
+  .jigsaw-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .jigsaw-desc > div { font-size: 12px; color: var(--navy); line-height: 1.7; }
+  .jigsaw-desc strong { font-weight: 900; color: var(--blue); font-size: 13px; }
+  .jigsaw-desc b { font-weight: 900; color: var(--navy); }
+
+  /* 나의 담당 사례 선택 */
+  .my-case-box {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+    background: var(--white); border: 2px solid var(--gold);
+    border-radius: 10px; padding: 8px 12px; flex-shrink: 0;
+  }
+  .my-case-label {
+    font-size: 11px; font-weight: 900; color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .my-case-btns { display: flex; gap: 5px; flex-wrap: wrap; }
+  .my-case-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid var(--gray-mid);
+    background: var(--white); color: var(--text-mid);
+    font-family: 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 900;
+    cursor: pointer; transition: all 0.18s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .my-case-btn:hover { border-color: var(--gold); background: #fdf6e3; }
+  .my-case-btn.active {
+    background: var(--gold); border-color: var(--gold);
+    color: var(--navy); box-shadow: 0 2px 8px rgba(201,151,58,0.4);
+  }
+
+  /* 모둠원 명단 */
+  .jigsaw-members { padding: 12px 16px 14px; }
+  .jigsaw-members-title {
+    font-size: 12px; font-weight: 900; color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .jigsaw-members-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  @media (max-width: 600px) {
+    .jigsaw-members-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 380px) {
+    .jigsaw-members-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .member-row { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .member-case-badge {
+    background: var(--navy); color: var(--gold-light);
+    font-size: 10px; font-weight: 900;
+    padding: 2px 10px; border-radius: 10px;
+    letter-spacing: 0.3px; white-space: nowrap;
+  }
+  .member-name-input {
+    width: 100%; border: 1.5px solid var(--gray-mid);
+    border-radius: 7px; padding: 5px 7px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 12px;
+    font-weight: 500; color: var(--text-dark);
+    background: var(--gray-light); text-align: center;
+    transition: border-color 0.2s, background 0.2s; outline: none;
+  }
+  .member-name-input:focus {
+    border-color: var(--gold); background: var(--white);
+  }
+  .member-name-input::placeholder { color: #bcc4d4; font-size: 10.5px; }
 
   /* ── CASE CARDS ── */
   .case-card { background:var(--white); border-radius:14px; margin-bottom:18px; box-shadow:var(--shadow); overflow:hidden; border:1.5px solid var(--gray-mid); }
@@ -355,11 +431,53 @@
     </div>
   </div>
 
-  <div class="jigsaw-info">
-    <div class="jigsaw-icon">🧩</div>
-    <div class="jigsaw-text">
-      <strong>Jigsaw 학습 방법</strong> | 각자 맡은 사례를 <strong>전문가 모둠</strong>에서 깊이 분석한 뒤, <strong>원래 모둠</strong>으로 돌아와 다른 모둠원에게 내용을 설명해 주세요.
-      나는 <strong>사례 ___번</strong>을 담당합니다. 해당 사례를 꼼꼼히 작성하고, 모둠 공유 칸도 채워주세요!
+  <div class="jigsaw-panel">
+    <!-- 상단: 설명 + 내 담당 번호 -->
+    <div class="jigsaw-top">
+      <div class="jigsaw-desc">
+        <span class="jigsaw-icon">🧩</span>
+        <div>
+          <strong>Jigsaw 학습 방법</strong><br>
+          <span>각자 맡은 사례를 <b>전문가 모둠</b>에서 깊이 분석한 뒤, <b>원래 모둠</b>으로 돌아와 모둠원에게 설명해 주세요.</span>
+        </div>
+      </div>
+      <div class="my-case-box">
+        <div class="my-case-label">나의 담당 사례</div>
+        <div class="my-case-btns">
+          <button class="my-case-btn" onclick="selectMyCase(this)">1번</button>
+          <button class="my-case-btn" onclick="selectMyCase(this)">2번</button>
+          <button class="my-case-btn" onclick="selectMyCase(this)">3번</button>
+          <button class="my-case-btn" onclick="selectMyCase(this)">4번</button>
+          <button class="my-case-btn" onclick="selectMyCase(this)">5번</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단: 모둠원 명단 -->
+    <div class="jigsaw-members">
+      <div class="jigsaw-members-title">👥 우리 모둠 명단</div>
+      <div class="jigsaw-members-grid">
+        <div class="member-row">
+          <div class="member-case-badge">사례 1</div>
+          <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
+        </div>
+        <div class="member-row">
+          <div class="member-case-badge">사례 2</div>
+          <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
+        </div>
+        <div class="member-row">
+          <div class="member-case-badge">사례 3</div>
+          <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
+        </div>
+        <div class="member-row">
+          <div class="member-case-badge">사례 4</div>
+          <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
+        </div>
+        <div class="member-row">
+          <div class="member-case-badge">사례 5</div>
+          <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1045,8 +1163,13 @@
 
 
 <script>
-  /* ────────────────────────────────────────────
-     체크박스: input의 change 이벤트로 label에
+  /* ── 나의 담당 사례 선택 ── */
+  function selectMyCase(btn) {
+    document.querySelectorAll('.my-case-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  /* ── 체크박스: input의 change 이벤트로 label에
      .checked 클래스를 추가/제거 → 시각 반영
      (label onclick과 input change의 이중 발화 없음)
   ──────────────────────────────────────────── */
@@ -1077,12 +1200,12 @@
     btn.textContent = content.classList.contains('open') ? '▲ 접기' : '▼ 펼치기';
   }
 
-  /* ── 별점 평가 ── */
+  /* ── 별점 평가 — 선택한 번호 하나만 색상 변경 ── */
   function rateStar(btn) {
     const row  = btn.closest('.star-row');
     const btns = Array.from(row.querySelectorAll('.star-btn'));
-    const idx  = btns.indexOf(btn);
-    btns.forEach((b, i) => b.classList.toggle('lit', i <= idx));
+    btns.forEach(b => b.classList.remove('lit'));
+    btn.classList.add('lit');
   }
 
   /* ────────────────────────────────────────────

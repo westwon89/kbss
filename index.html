@@ -389,6 +389,245 @@
   .eval-comment { display:flex; flex-direction:column; gap:6px; }
   .eval-comment label { font-size:12.5px; font-weight:700; color:var(--navy); }
 
+  /* ══════════════════════════════════════════
+     협업 단계 & 사회자 카드
+  ══════════════════════════════════════════ */
+  .collab-steps {
+    display: flex; align-items: center; gap: 6px;
+    flex-wrap: wrap;
+    background: #f8f9ff; border: 1.5px solid #c5cef5;
+    border-radius: 10px; padding: 10px 14px;
+    margin-bottom: 10px;
+  }
+  .collab-step {
+    display: flex; align-items: center; gap: 8px;
+    flex: 1; min-width: 130px;
+    border-radius: 8px; padding: 8px 11px;
+  }
+  .step-solo   { background: #fff3e0; border: 1.5px solid #ffcc80; }
+  .step-pair   { background: #e3f2fd; border: 1.5px solid #90caf9; }
+  .step-group  { background: #e8f5e9; border: 1.5px solid #a5d6a7; }
+  .step-badge {
+    font-size: 10px; font-weight: 900;
+    padding: 2px 7px; border-radius: 10px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .step-solo  .step-badge { background: #e65100; color: #fff; }
+  .step-pair  .step-badge { background: #1565c0; color: #fff; }
+  .step-group .step-badge { background: #2e7d32; color: #fff; }
+  .step-text { font-size: 11px; line-height: 1.5; color: var(--text-dark); }
+  .step-text strong { font-weight: 900; font-size: 12px; }
+  .step-arrow { font-size: 16px; color: var(--gray-mid); flex-shrink: 0; }
+  @media (max-width: 600px) { .step-arrow { display: none; } }
+
+  /* 사회자 카드 */
+  .host-card {
+    background: linear-gradient(135deg, #1a237e, #283593);
+    border-radius: 10px; padding: 11px 14px;
+    margin-bottom: 10px;
+  }
+  .host-card-header {
+    color: var(--gold-light); font-size: 12px; font-weight: 900;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    flex-wrap: wrap;
+  }
+  .host-tip {
+    font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.1); border-radius: 10px; padding: 1px 8px;
+  }
+  .host-questions { display: flex; flex-direction: column; gap: 5px; }
+  .host-q {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: rgba(255,255,255,0.08); border-radius: 7px;
+    padding: 6px 10px; font-size: 11.5px; color: rgba(255,255,255,0.9);
+    line-height: 1.55;
+  }
+  .hq-num {
+    background: var(--gold); color: var(--navy);
+    font-size: 10px; font-weight: 900;
+    padding: 1px 6px; border-radius: 8px;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* 토의 확인 체크리스트 */
+  .share-checklist {
+    background: rgba(255,255,255,0.1); border-radius: 8px;
+    padding: 8px 12px; margin-bottom: 10px;
+  }
+  .share-checklist-title {
+    font-size: 11px; font-weight: 900; color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+  .share-checklist-items {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .share-check {
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.08); border-radius: 20px;
+    padding: 4px 11px; font-size: 11px; font-weight: 600;
+    color: rgba(255,255,255,0.85); cursor: pointer;
+    transition: background 0.15s;
+  }
+  .share-check:hover { background: rgba(255,255,255,0.16); }
+  .share-check input[type="checkbox"] { accent-color: var(--gold); width: 13px; height: 13px; }
+
+  /* 설명 가이드 줄 */
+  .share-guide {
+    font-size: 10.5px; color: rgba(255,255,255,0.55);
+    margin-bottom: 4px; line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── 예시 카드 — 모둠 공유 메모 예시 ── */
+  .ex-share-example {
+    background: linear-gradient(135deg, #0d47a1, #1565c0);
+    border-radius: 10px; padding: 12px 14px;
+  }
+  .ex-share-title {
+    color: var(--gold-light); font-size: 12px; font-weight: 900;
+    margin-bottom: 9px;
+  }
+  .ex-share-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  @media (max-width: 600px) { .ex-share-grid { grid-template-columns: 1fr; } }
+  .ex-share-item { display: flex; flex-direction: column; gap: 5px; }
+  .ex-share-label {
+    font-size: 11px; font-weight: 900; color: rgba(255,255,255,0.8);
+  }
+  .ex-share-bubble {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px; padding: 8px 10px;
+    font-size: 11.5px; color: rgba(255,255,255,0.92);
+    line-height: 1.7;
+  }
+  .ex-share-bubble strong { color: var(--gold-light); font-weight: 900; }
+  .ex-share-bubble em { font-style: normal; text-decoration: underline; text-underline-offset: 2px; color: #90caf9; }
+
+  /* ══════════════════════════════════════════
+     예시 카드
+  ══════════════════════════════════════════ */
+  .example-card {
+    background: var(--white); border-radius: 14px;
+    margin-bottom: 18px; box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 3px solid #2e7d32;
+  }
+  .example-header {
+    background: linear-gradient(90deg, #2e7d32, #43a047);
+    padding: 12px 18px; display: flex; align-items: center; gap: 10px;
+  }
+  .example-badge {
+    background: #fff; color: #2e7d32;
+    font-size: 11px; font-weight: 900;
+    padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .example-title {
+    color: #fff; font-family: 'Noto Serif KR', serif;
+    font-size: 14px; font-weight: 700;
+  }
+  .example-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* 예시 사례 본문 */
+  .example-scenario-label {
+    font-size: 11px; font-weight: 900; color: #2e7d32; margin-bottom: 5px;
+  }
+  .example-scenario {
+    background: #f1f8e9; border: 1.5px solid #a5d6a7;
+    border-left: 4px solid #43a047; border-radius: 8px;
+    padding: 11px 13px; font-size: 13px; line-height: 1.75;
+    color: var(--text-dark); font-weight: 500;
+  }
+  .example-scenario strong { color: #1b5e20; font-weight: 900; }
+
+  /* 예시 힌트 */
+  .example-hint-label { font-size: 11px; font-weight: 900; color: #1d5fa8; margin-bottom: 5px; }
+  .example-hint {
+    background: #f0f7ff; border: 1.5px solid #b8d4f5;
+    border-radius: 8px; padding: 10px 13px;
+  }
+
+  /* 예시 답안 영역 */
+  .example-answers { display: grid; gap: 8px; }
+  .ex-block { border-radius: 9px; overflow: hidden; border: 1.5px solid var(--gray-mid); }
+  .ex-block-header {
+    padding: 8px 12px; font-size: 12px; font-weight: 900;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .ex-filled {
+    font-size: 10px; font-weight: 700;
+    background: rgba(255,255,255,0.5); border-radius: 10px;
+    padding: 1px 8px; margin-left: 4px;
+  }
+  .ex-block-rights  .ex-block-header { background: #e8f5e9; color: #2e7d32; border-bottom: 1.5px solid #a5d6a7; }
+  .ex-block-limit   .ex-block-header { background: #fff8ee; color: #7a4800; border-bottom: 1.5px solid #e8c97a; }
+  .ex-block-verdict .ex-block-header { background: #fce4ec; color: #880e4f; border-bottom: 1.5px solid #f48fb1; }
+
+  /* 기본권 답 행 */
+  .ex-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 8px 12px; background: var(--white);
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-num {
+    background: #2e7d32; color: #fff;
+    font-size: 10px; font-weight: 900;
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+  }
+  .ex-answer { font-size: 12px; line-height: 1.65; color: var(--text-dark); }
+  .ex-tag {
+    display: inline-block; padding: 1px 8px; border-radius: 10px;
+    font-size: 10.5px; font-weight: 900; margin-right: 5px; margin-bottom: 2px;
+  }
+  .ex-violate { background: #fde8e8; color: var(--red-accent); border: 1px solid #f5b8b8; }
+  .ex-protect { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+
+  /* 체크 시각화 */
+  .ex-checks {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 8px 12px 6px; background: var(--white);
+  }
+  .ex-check-item {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 11px; border-radius: 20px;
+    font-size: 12px; font-weight: 700;
+  }
+  .ex-unchecked {
+    background: var(--cream); border: 1.5px solid var(--cream-dark); color: #aaa;
+    text-decoration: line-through; opacity: 0.6;
+  }
+  .ex-unjust-checked {
+    background: var(--red-accent); border: 1.5px solid var(--red-accent);
+    color: #fff;
+  }
+  .ex-reason {
+    padding: 6px 12px 10px; background: var(--white);
+    font-size: 12px; color: var(--text-mid); line-height: 1.6;
+    border-top: 1px dashed var(--gray-mid);
+  }
+
+  /* 최종판단 */
+  .ex-verdict-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; background: var(--white);
+  }
+  .ex-verdict-btn {
+    padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 900;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .ex-verdict-violate { background: var(--red-accent); color: #fff; }
+  .ex-verdict-protect { background: var(--green-accent); color: #fff; }
+  .ex-verdict-text { font-size: 12px; line-height: 1.65; color: var(--text-dark); padding-top: 2px; }
+
+  /* 안내 팁 */
+  .example-tip {
+    background: linear-gradient(90deg, #e8f5e9, #f1f8e9);
+    border: 1.5px solid #a5d6a7; border-radius: 8px;
+    padding: 9px 14px; font-size: 12px; font-weight: 700; color: #2e7d32;
+  }
+
   /* ── FOOTER ── */
   .footer-bar { background:var(--navy); color:rgba(255,255,255,0.55); text-align:center; font-size:10px; padding:10px; border-radius:8px; margin-top:6px; letter-spacing:0.5px; line-height:1.8; }
   .footer-bar strong { color:var(--gold-light); }
@@ -484,24 +723,136 @@
       <div class="jigsaw-members-title">👥 우리 모둠 명단</div>
       <div class="jigsaw-members-grid">
         <div class="member-row">
-          <div class="member-case-badge">사례 1</div>
+          <div class="member-case-badge">1번 담당</div>
           <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
         </div>
         <div class="member-row">
-          <div class="member-case-badge">사례 2</div>
+          <div class="member-case-badge">2번 담당</div>
           <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
         </div>
         <div class="member-row">
-          <div class="member-case-badge">사례 3</div>
+          <div class="member-case-badge">3번 담당</div>
           <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
         </div>
         <div class="member-row">
-          <div class="member-case-badge">사례 4</div>
+          <div class="member-case-badge">4번 담당</div>
           <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
         </div>
         <div class="member-row">
-          <div class="member-case-badge">사례 5</div>
+          <div class="member-case-badge">5번 담당</div>
           <input type="text" class="member-name-input" placeholder="이름을 써 주세요">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       📖 예시 — 이렇게 분석해요! (완성된 예시)
+  ══════════════════════════════════════════ -->
+  <div class="example-card">
+    <div class="example-header">
+      <span class="example-badge">📖 예시</span>
+      <span class="example-title">이렇게 분석하면 돼요! — 먼저 읽고 시작하세요</span>
+    </div>
+    <div class="example-body">
+
+      <!-- 예시 사례 본문 -->
+      <div class="example-scenario-wrap">
+        <div class="example-scenario-label">📋 예시 사례</div>
+        <div class="example-scenario">
+          중학생 준서는 학교 수업 중 선생님이 부당하다고 느껴지는 점을 일기에 솔직하게 적었습니다.
+          그런데 담임 선생님이 <strong>허락 없이 준서의 일기를 읽고 반 친구들 앞에서 내용을 공개</strong>했습니다.
+          준서는 너무 창피하고 억울했습니다.
+        </div>
+      </div>
+
+      <!-- 예시 힌트 -->
+      <div class="example-hint-wrap">
+        <div class="example-hint-label">💡 생각 열기 힌트 (접혀 있던 것을 펼치면 이런 내용이 나와요)</div>
+        <div class="example-hint">
+          <ul class="scaffold-list" style="margin-bottom:6px;">
+            <li>준서의 일기를 허락 없이 읽은 것은 개인의 어떤 공간을 침범한 것일까요?</li>
+            <li>반 친구들 앞에 공개한 것은 준서의 어떤 권리를 침해한 걸까요?</li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;">
+            <span class="kw-tag">헌법 제17조</span>
+            <span class="kw-tag">헌법 제10조</span>
+            <span class="kw-tag">사생활의 비밀</span>
+          </div>
+          <div style="margin-top:8px; background:#fff2f2; border:1px solid #f5c0c0; border-radius:7px; padding:6px 10px; font-size:11.5px; color:#7a1a1a;">
+            <strong>❌ 침해된 기본권</strong>을 쓸 때는 → <em>준서 입장</em>에서 어떤 권리를 빼앗겼는지 생각해 보세요.
+          </div>
+        </div>
+      </div>
+
+      <!-- 예시 답안 -->
+      <div class="example-answers">
+
+        <!-- ① 침해된 기본권 -->
+        <div class="ex-block ex-block-rights">
+          <div class="ex-block-header">🔍 ① 침해된 기본권 — <span class="ex-filled">이렇게 썼어요</span></div>
+          <div class="ex-row">
+            <div class="ex-num">①</div>
+            <div class="ex-answer">
+              <span class="ex-tag ex-violate">❌ 침해</span>
+              <span><strong>자유권(사생활의 자유)</strong> — 선생님이 준서의 허락 없이 일기를 열람하여 사생활의 비밀과 자유를 침해하였다.</span>
+            </div>
+          </div>
+          <div class="ex-row">
+            <div class="ex-num">②</div>
+            <div class="ex-answer">
+              <span class="ex-tag ex-violate">❌ 침해</span>
+              <span><strong>헌법 제10조(인간의 존엄과 행복추구권)</strong> — 반 친구들 앞에 일기 내용을 공개하여 준서의 인격권과 존엄성을 침해하였다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ② 기본권 제한 정당성 -->
+        <div class="ex-block ex-block-limit">
+          <div class="ex-block-header">⚖️ ② 기본권 제한 정당성 — <span class="ex-filled">이렇게 체크했어요</span></div>
+          <div class="ex-checks">
+            <span class="ex-check-item ex-unchecked">🛡️ 국가 안전보장</span>
+            <span class="ex-check-item ex-unchecked">🚦 질서 유지</span>
+            <span class="ex-check-item ex-unchecked">🌏 공공복리</span>
+            <span class="ex-check-item ex-unjust-checked">❌ 정당하지 않음 ✓</span>
+          </div>
+          <div class="ex-reason">
+            선생님의 행동은 국가 안전보장, 질서 유지, 공공복리 중 어디에도 해당하지 않는다. 따라서 이 기본권 침해는 정당한 이유가 없다.
+          </div>
+        </div>
+
+        <!-- ③ 최종 판단 -->
+        <div class="ex-block ex-block-verdict">
+          <div class="ex-block-header">📋 ③ 최종 판단 — <span class="ex-filled">이렇게 판단했어요</span></div>
+          <div class="ex-verdict-row">
+            <span class="ex-verdict-btn ex-verdict-violate">❌ 침해</span>
+            <span class="ex-verdict-text">선생님이 준서의 동의 없이 일기를 읽고 공개한 것은 사생활의 자유와 인간의 존엄성을 침해한 것이며, 정당한 기본권 제한의 사유도 없으므로 부당한 기본권 침해이다.</span>
+          </div>
+        </div>
+
+      </div><!-- /example-answers -->
+
+      <div class="example-tip">
+        💬 이제 위 예시처럼 아래 1번 담당부터 5번 담당까지 각자 맡은 번호를 분석해 보세요!
+      </div>
+
+      <!-- 모둠 공유 메모 예시 -->
+      <div class="ex-share-example">
+        <div class="ex-share-title">🗣️ 전문가 모둠 토의 기록 — 이렇게 쓰면 돼요</div>
+        <div class="ex-share-grid">
+          <div class="ex-share-item">
+            <div class="ex-share-label">📢 원래 모둠에서 설명할 핵심 내용 예시</div>
+            <div class="ex-share-bubble">
+              이 사례에서 준서의 <strong>자유권(사생활의 자유)</strong>과 <strong>헌법 제10조(존엄과 행복추구권)</strong>이 침해됐어. 선생님이 허락 없이 일기를 읽고 공개했기 때문이야. 국가 안전보장·질서 유지·공공복리 어디에도 해당하지 않아서 <strong>정당하지 않은 침해</strong>야.
+            </div>
+          </div>
+          <div class="ex-share-item">
+            <div class="ex-share-label">✍️ 토의 중 나온 다양한 의견 메모 예시</div>
+            <div class="ex-share-bubble">
+              처음엔 자유권인지 평등권인지 의견이 나뉘었어. 결국 <em>일기를 허락 없이 열람한 것</em>은 자유권, <em>공개한 것</em>은 인격권(헌법 제10조)이라고 결론지었어. 제한 사유는 없다는 데 모두 동의했어.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -514,7 +865,7 @@
   ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
-      <div class="case-number">1<span>사례</span></div>
+      <div class="case-number">1<span>번 담당</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 01 · 교육 현장</div>
         <div class="case-title">학교 입학 시험에서 장애 학생 편의 제공 거부</div>
@@ -544,39 +895,61 @@
           <div class="scaffold-perspective">
             <div class="persp-item persp-violate">
               <span class="persp-icon">❌</span>
-              <span><strong>침해된 기본권</strong>을 쓸 때는 → <em>태양이 입장</em>에서 어떤 권리를 빼앗겼는지 생각해 보세요.</span>
-            </div>
-            <div class="persp-item persp-protect">
-              <span class="persp-icon">✅</span>
-              <span><strong>보장된 기본권</strong>을 쓸 때는 → 이 사례에서 누군가의 권리가 오히려 지켜진 면이 있는지 생각해 보세요.</span>
+              <span><strong>침해된 기본권</strong>을 쓸 때는 → <em>태양이 입장</em>에서 어떤 권리를 빼앗겼는지 생각해 보세요. 이 사례에서는 침해된 기본권 2가지를 찾아보세요.</span>
             </div>
           </div>
         </div>
       </div>
 
+
+      <!-- 협업 단계 안내 -->
+      <div class="collab-steps">
+        <div class="collab-step step-solo">
+          <div class="step-badge">1단계</div>
+          <div class="step-text"><strong>혼자 읽기</strong><br>사례를 읽고 떠오르는 생각을 메모하세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-pair">
+          <div class="step-badge">2단계</div>
+          <div class="step-text"><strong>의견 나누기</strong><br>옆 사람과 생각을 말로 비교해 보세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-group">
+          <div class="step-badge">3단계</div>
+          <div class="step-text"><strong>모둠 합의</strong><br>함께 최종 답을 완성해 쓰세요</div>
+        </div>
+      </div>
+
+      <!-- 사회자 역할 카드 -->
+      <div class="host-card">
+        <div class="host-card-header">
+          🙋 <strong>사회자</strong> — 오늘 이 사례를 이끌 한 명이 아래 질문을 차례로 물어봐 주세요!
+          <span class="host-tip">※ 사회자가 없으면 출석번호가 가장 빠른 사람이 맡아요</span>
+        </div>
+        <div class="host-questions">
+          <div class="host-q"><span class="hq-num">Q1</span> "사례를 다 읽었나요? 어떤 상황인지 한 문장으로 말해볼 사람?"</div>
+          <div class="host-q"><span class="hq-num">Q2</span> "이 사례에서 누구의 어떤 권리가 침해됐다고 생각해요? 각자 말해 봐요."</div>
+          <div class="host-q"><span class="hq-num">Q3</span> "국가 안전보장, 질서 유지, 공공복리 중에서 해당하는 게 있나요? 왜 그렇게 생각해요?"</div>
+          <div class="host-q"><span class="hq-num">Q4</span> "다들 동의하는 최종 판단은 뭐예요? 이유도 같이 말해 봐요."</div>
+        </div>
+      </div>
+
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
               <div class="rights-item">
                 <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
             </div>
@@ -619,10 +992,30 @@
         </div>
       </div>
       <div class="share-section">
-        <div class="share-title">🗣️ 모둠 공유 메모</div>
+        <div class="share-title">🗣️ 전문가 모둠 토의 기록</div>
+
+        <!-- 토의 진행 확인 체크 -->
+        <div class="share-checklist">
+          <div class="share-checklist-title">✅ 토의가 잘 됐는지 확인해요</div>
+          <div class="share-checklist-items">
+            <label class="share-check"><input type="checkbox"> 모둠원 모두 사례를 읽었다</label>
+            <label class="share-check"><input type="checkbox"> 기본권 이름에 대해 의견을 나눴다</label>
+            <label class="share-check"><input type="checkbox"> 제한의 정당성을 함께 판단했다</label>
+            <label class="share-check"><input type="checkbox"> 최종 판단 이유를 같이 정리했다</label>
+          </div>
+        </div>
+
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item">
+            <label>📢 원래 모둠에서 설명할 핵심 내용</label>
+            <div class="share-guide">💡 예시: "이 사례에서 ○○이 침해됐어. 왜냐면 ~이기 때문이야. 제한 사유는 없어서 부당한 침해야."</div>
+            <textarea rows="4" placeholder="설명할 핵심 내용을 3줄 이내로 정리해 보세요."></textarea>
+          </div>
+          <div class="share-item">
+            <label>✍️ 토의 중 나온 다양한 의견 메모</label>
+            <div class="share-guide">💡 예시: "○○이는 평등권이라고 했고, ○○이는 교육권이라고 했다. 둘 다 맞다고 결론 냈다."</div>
+            <textarea rows="4" placeholder="우리 모둠에서 나온 의견들을 적어 두세요 (다양한 생각도 OK)."></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -635,7 +1028,7 @@
   ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
-      <div class="case-number">2<span>사례</span></div>
+      <div class="case-number">2<span>번 담당</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 02 · 보건 &amp; 공공안전</div>
         <div class="case-title">감염병 확산 방지를 위한 격리 조치</div>
@@ -676,29 +1069,55 @@
         </div>
       </div>
 
+
+      <!-- 협업 단계 안내 -->
+      <div class="collab-steps">
+        <div class="collab-step step-solo">
+          <div class="step-badge">1단계</div>
+          <div class="step-text"><strong>혼자 읽기</strong><br>사례를 읽고 떠오르는 생각을 메모하세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-pair">
+          <div class="step-badge">2단계</div>
+          <div class="step-text"><strong>의견 나누기</strong><br>옆 사람과 생각을 말로 비교해 보세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-group">
+          <div class="step-badge">3단계</div>
+          <div class="step-text"><strong>모둠 합의</strong><br>함께 최종 답을 완성해 쓰세요</div>
+        </div>
+      </div>
+
+      <!-- 사회자 역할 카드 -->
+      <div class="host-card">
+        <div class="host-card-header">
+          🙋 <strong>사회자</strong> — 오늘 이 사례를 이끌 한 명이 아래 질문을 차례로 물어봐 주세요!
+          <span class="host-tip">※ 사회자가 없으면 출석번호가 가장 빠른 사람이 맡아요</span>
+        </div>
+        <div class="host-questions">
+          <div class="host-q"><span class="hq-num">Q1</span> "사례를 다 읽었나요? 어떤 상황인지 한 문장으로 말해볼 사람?"</div>
+          <div class="host-q"><span class="hq-num">Q2</span> "이 사례에서 누구의 어떤 권리가 침해됐다고 생각해요? 각자 말해 봐요."</div>
+          <div class="host-q"><span class="hq-num">Q3</span> "국가 안전보장, 질서 유지, 공공복리 중에서 해당하는 게 있나요? 왜 그렇게 생각해요?"</div>
+          <div class="host-q"><span class="hq-num">Q4</span> "다들 동의하는 최종 판단은 뭐예요? 이유도 같이 말해 봐요."</div>
+        </div>
+      </div>
+
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 제한된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
               <div class="rights-item">
                 <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
             </div>
@@ -741,10 +1160,30 @@
         </div>
       </div>
       <div class="share-section">
-        <div class="share-title">🗣️ 모둠 공유 메모</div>
+        <div class="share-title">🗣️ 전문가 모둠 토의 기록</div>
+
+        <!-- 토의 진행 확인 체크 -->
+        <div class="share-checklist">
+          <div class="share-checklist-title">✅ 토의가 잘 됐는지 확인해요</div>
+          <div class="share-checklist-items">
+            <label class="share-check"><input type="checkbox"> 모둠원 모두 사례를 읽었다</label>
+            <label class="share-check"><input type="checkbox"> 기본권 이름에 대해 의견을 나눴다</label>
+            <label class="share-check"><input type="checkbox"> 제한의 정당성을 함께 판단했다</label>
+            <label class="share-check"><input type="checkbox"> 최종 판단 이유를 같이 정리했다</label>
+          </div>
+        </div>
+
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item">
+            <label>📢 원래 모둠에서 설명할 핵심 내용</label>
+            <div class="share-guide">💡 예시: "이 사례에서 ○○이 침해됐어. 왜냐면 ~이기 때문이야. 제한 사유는 없어서 부당한 침해야."</div>
+            <textarea rows="4" placeholder="설명할 핵심 내용을 3줄 이내로 정리해 보세요."></textarea>
+          </div>
+          <div class="share-item">
+            <label>✍️ 토의 중 나온 다양한 의견 메모</label>
+            <div class="share-guide">💡 예시: "○○이는 평등권이라고 했고, ○○이는 교육권이라고 했다. 둘 다 맞다고 결론 냈다."</div>
+            <textarea rows="4" placeholder="우리 모둠에서 나온 의견들을 적어 두세요 (다양한 생각도 OK)."></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -757,7 +1196,7 @@
   ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
-      <div class="case-number">3<span>사례</span></div>
+      <div class="case-number">3<span>번 담당</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 03 · 선거 &amp; 참정</div>
         <div class="case-title">선거일 투표 참여와 주민 투표·공무원 채용 거부 논란</div>
@@ -798,29 +1237,55 @@
         </div>
       </div>
 
+
+      <!-- 협업 단계 안내 -->
+      <div class="collab-steps">
+        <div class="collab-step step-solo">
+          <div class="step-badge">1단계</div>
+          <div class="step-text"><strong>혼자 읽기</strong><br>사례를 읽고 떠오르는 생각을 메모하세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-pair">
+          <div class="step-badge">2단계</div>
+          <div class="step-text"><strong>의견 나누기</strong><br>옆 사람과 생각을 말로 비교해 보세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-group">
+          <div class="step-badge">3단계</div>
+          <div class="step-text"><strong>모둠 합의</strong><br>함께 최종 답을 완성해 쓰세요</div>
+        </div>
+      </div>
+
+      <!-- 사회자 역할 카드 -->
+      <div class="host-card">
+        <div class="host-card-header">
+          🙋 <strong>사회자</strong> — 오늘 이 사례를 이끌 한 명이 아래 질문을 차례로 물어봐 주세요!
+          <span class="host-tip">※ 사회자가 없으면 출석번호가 가장 빠른 사람이 맡아요</span>
+        </div>
+        <div class="host-questions">
+          <div class="host-q"><span class="hq-num">Q1</span> "사례를 다 읽었나요? 어떤 상황인지 한 문장으로 말해볼 사람?"</div>
+          <div class="host-q"><span class="hq-num">Q2</span> "이 사례에서 누구의 어떤 권리가 침해됐다고 생각해요? 각자 말해 봐요."</div>
+          <div class="host-q"><span class="hq-num">Q3</span> "국가 안전보장, 질서 유지, 공공복리 중에서 해당하는 게 있나요? 왜 그렇게 생각해요?"</div>
+          <div class="host-q"><span class="hq-num">Q4</span> "다들 동의하는 최종 판단은 뭐예요? 이유도 같이 말해 봐요."</div>
+        </div>
+      </div>
+
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
               <div class="rights-item">
                 <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
             </div>
@@ -863,10 +1328,30 @@
         </div>
       </div>
       <div class="share-section">
-        <div class="share-title">🗣️ 모둠 공유 메모</div>
+        <div class="share-title">🗣️ 전문가 모둠 토의 기록</div>
+
+        <!-- 토의 진행 확인 체크 -->
+        <div class="share-checklist">
+          <div class="share-checklist-title">✅ 토의가 잘 됐는지 확인해요</div>
+          <div class="share-checklist-items">
+            <label class="share-check"><input type="checkbox"> 모둠원 모두 사례를 읽었다</label>
+            <label class="share-check"><input type="checkbox"> 기본권 이름에 대해 의견을 나눴다</label>
+            <label class="share-check"><input type="checkbox"> 제한의 정당성을 함께 판단했다</label>
+            <label class="share-check"><input type="checkbox"> 최종 판단 이유를 같이 정리했다</label>
+          </div>
+        </div>
+
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item">
+            <label>📢 원래 모둠에서 설명할 핵심 내용</label>
+            <div class="share-guide">💡 예시: "이 사례에서 ○○이 침해됐어. 왜냐면 ~이기 때문이야. 제한 사유는 없어서 부당한 침해야."</div>
+            <textarea rows="4" placeholder="설명할 핵심 내용을 3줄 이내로 정리해 보세요."></textarea>
+          </div>
+          <div class="share-item">
+            <label>✍️ 토의 중 나온 다양한 의견 메모</label>
+            <div class="share-guide">💡 예시: "○○이는 평등권이라고 했고, ○○이는 교육권이라고 했다. 둘 다 맞다고 결론 냈다."</div>
+            <textarea rows="4" placeholder="우리 모둠에서 나온 의견들을 적어 두세요 (다양한 생각도 OK)."></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -879,7 +1364,7 @@
   ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
-      <div class="case-number">4<span>사례</span></div>
+      <div class="case-number">4<span>번 담당</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 04 · 노동 &amp; 생활</div>
         <div class="case-title">최저 임금 미지급과 야간 근무 강요</div>
@@ -916,29 +1401,55 @@
         </div>
       </div>
 
+
+      <!-- 협업 단계 안내 -->
+      <div class="collab-steps">
+        <div class="collab-step step-solo">
+          <div class="step-badge">1단계</div>
+          <div class="step-text"><strong>혼자 읽기</strong><br>사례를 읽고 떠오르는 생각을 메모하세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-pair">
+          <div class="step-badge">2단계</div>
+          <div class="step-text"><strong>의견 나누기</strong><br>옆 사람과 생각을 말로 비교해 보세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-group">
+          <div class="step-badge">3단계</div>
+          <div class="step-text"><strong>모둠 합의</strong><br>함께 최종 답을 완성해 쓰세요</div>
+        </div>
+      </div>
+
+      <!-- 사회자 역할 카드 -->
+      <div class="host-card">
+        <div class="host-card-header">
+          🙋 <strong>사회자</strong> — 오늘 이 사례를 이끌 한 명이 아래 질문을 차례로 물어봐 주세요!
+          <span class="host-tip">※ 사회자가 없으면 출석번호가 가장 빠른 사람이 맡아요</span>
+        </div>
+        <div class="host-questions">
+          <div class="host-q"><span class="hq-num">Q1</span> "사례를 다 읽었나요? 어떤 상황인지 한 문장으로 말해볼 사람?"</div>
+          <div class="host-q"><span class="hq-num">Q2</span> "이 사례에서 누구의 어떤 권리가 침해됐다고 생각해요? 각자 말해 봐요."</div>
+          <div class="host-q"><span class="hq-num">Q3</span> "국가 안전보장, 질서 유지, 공공복리 중에서 해당하는 게 있나요? 왜 그렇게 생각해요?"</div>
+          <div class="host-q"><span class="hq-num">Q4</span> "다들 동의하는 최종 판단은 뭐예요? 이유도 같이 말해 봐요."</div>
+        </div>
+      </div>
+
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
               <div class="rights-item">
                 <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
             </div>
@@ -981,10 +1492,30 @@
         </div>
       </div>
       <div class="share-section">
-        <div class="share-title">🗣️ 모둠 공유 메모</div>
+        <div class="share-title">🗣️ 전문가 모둠 토의 기록</div>
+
+        <!-- 토의 진행 확인 체크 -->
+        <div class="share-checklist">
+          <div class="share-checklist-title">✅ 토의가 잘 됐는지 확인해요</div>
+          <div class="share-checklist-items">
+            <label class="share-check"><input type="checkbox"> 모둠원 모두 사례를 읽었다</label>
+            <label class="share-check"><input type="checkbox"> 기본권 이름에 대해 의견을 나눴다</label>
+            <label class="share-check"><input type="checkbox"> 제한의 정당성을 함께 판단했다</label>
+            <label class="share-check"><input type="checkbox"> 최종 판단 이유를 같이 정리했다</label>
+          </div>
+        </div>
+
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item">
+            <label>📢 원래 모둠에서 설명할 핵심 내용</label>
+            <div class="share-guide">💡 예시: "이 사례에서 ○○이 침해됐어. 왜냐면 ~이기 때문이야. 제한 사유는 없어서 부당한 침해야."</div>
+            <textarea rows="4" placeholder="설명할 핵심 내용을 3줄 이내로 정리해 보세요."></textarea>
+          </div>
+          <div class="share-item">
+            <label>✍️ 토의 중 나온 다양한 의견 메모</label>
+            <div class="share-guide">💡 예시: "○○이는 평등권이라고 했고, ○○이는 교육권이라고 했다. 둘 다 맞다고 결론 냈다."</div>
+            <textarea rows="4" placeholder="우리 모둠에서 나온 의견들을 적어 두세요 (다양한 생각도 OK)."></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -997,7 +1528,7 @@
   ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
-      <div class="case-number">5<span>사례</span></div>
+      <div class="case-number">5<span>번 담당</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 05 · 안보 &amp; 재산권</div>
         <div class="case-title">군사시설 보호구역 내 건물 신축 제한</div>
@@ -1038,29 +1569,55 @@
         </div>
       </div>
 
+
+      <!-- 협업 단계 안내 -->
+      <div class="collab-steps">
+        <div class="collab-step step-solo">
+          <div class="step-badge">1단계</div>
+          <div class="step-text"><strong>혼자 읽기</strong><br>사례를 읽고 떠오르는 생각을 메모하세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-pair">
+          <div class="step-badge">2단계</div>
+          <div class="step-text"><strong>의견 나누기</strong><br>옆 사람과 생각을 말로 비교해 보세요</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="collab-step step-group">
+          <div class="step-badge">3단계</div>
+          <div class="step-text"><strong>모둠 합의</strong><br>함께 최종 답을 완성해 쓰세요</div>
+        </div>
+      </div>
+
+      <!-- 사회자 역할 카드 -->
+      <div class="host-card">
+        <div class="host-card-header">
+          🙋 <strong>사회자</strong> — 오늘 이 사례를 이끌 한 명이 아래 질문을 차례로 물어봐 주세요!
+          <span class="host-tip">※ 사회자가 없으면 출석번호가 가장 빠른 사람이 맡아요</span>
+        </div>
+        <div class="host-questions">
+          <div class="host-q"><span class="hq-num">Q1</span> "사례를 다 읽었나요? 어떤 상황인지 한 문장으로 말해볼 사람?"</div>
+          <div class="host-q"><span class="hq-num">Q2</span> "이 사례에서 누구의 어떤 권리가 침해됐다고 생각해요? 각자 말해 봐요."</div>
+          <div class="host-q"><span class="hq-num">Q3</span> "국가 안전보장, 질서 유지, 공공복리 중에서 해당하는 게 있나요? 왜 그렇게 생각해요?"</div>
+          <div class="host-q"><span class="hq-num">Q4</span> "다들 동의하는 최종 판단은 뭐예요? 이유도 같이 말해 봐요."</div>
+        </div>
+      </div>
+
+
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해 또는 보장된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 제한된 기본권 2가지를 찾아 쓰세요</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
               <div class="rights-item">
                 <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
-                  <div class="type-select">
-                    <button class="type-btn type-btn-violate" onclick="selectType(this)">❌ 침해</button>
-                    <button class="type-btn type-btn-protect" onclick="selectType(this)">✅ 보장</button>
-                  </div>
-                  <textarea rows="2" placeholder="기본권 이름과 침해/보장된 이유를 써 보세요."></textarea>
+                  <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
               </div>
             </div>
@@ -1103,10 +1660,30 @@
         </div>
       </div>
       <div class="share-section">
-        <div class="share-title">🗣️ 모둠 공유 메모</div>
+        <div class="share-title">🗣️ 전문가 모둠 토의 기록</div>
+
+        <!-- 토의 진행 확인 체크 -->
+        <div class="share-checklist">
+          <div class="share-checklist-title">✅ 토의가 잘 됐는지 확인해요</div>
+          <div class="share-checklist-items">
+            <label class="share-check"><input type="checkbox"> 모둠원 모두 사례를 읽었다</label>
+            <label class="share-check"><input type="checkbox"> 기본권 이름에 대해 의견을 나눴다</label>
+            <label class="share-check"><input type="checkbox"> 제한의 정당성을 함께 판단했다</label>
+            <label class="share-check"><input type="checkbox"> 최종 판단 이유를 같이 정리했다</label>
+          </div>
+        </div>
+
         <div class="share-grid">
-          <div class="share-item"><label>내가 모둠원에게 설명할 핵심 내용</label><textarea rows="3" placeholder="핵심 내용만 간단히 정리해두세요."></textarea></div>
-          <div class="share-item"><label>모둠원에게서 배운 점 / 추가 의견</label><textarea rows="3" placeholder="친구의 설명을 듣고 새로 알게 된 점을 적어요."></textarea></div>
+          <div class="share-item">
+            <label>📢 원래 모둠에서 설명할 핵심 내용</label>
+            <div class="share-guide">💡 예시: "이 사례에서 ○○이 침해됐어. 왜냐면 ~이기 때문이야. 제한 사유는 없어서 부당한 침해야."</div>
+            <textarea rows="4" placeholder="설명할 핵심 내용을 3줄 이내로 정리해 보세요."></textarea>
+          </div>
+          <div class="share-item">
+            <label>✍️ 토의 중 나온 다양한 의견 메모</label>
+            <div class="share-guide">💡 예시: "○○이는 평등권이라고 했고, ○○이는 교육권이라고 했다. 둘 다 맞다고 결론 냈다."</div>
+            <textarea rows="4" placeholder="우리 모둠에서 나온 의견들을 적어 두세요 (다양한 생각도 OK)."></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -1407,11 +1984,36 @@
     scheduleSave();
   }
 
-  /* ── 체크박스 ── */
+  /* ── 체크박스 — 배타적 선택 ── */
   function syncCheck(labelId) {
-    const label = document.getElementById(labelId);
-    const cb    = label.querySelector('input[type="checkbox"]');
-    label.classList.toggle('checked', cb.checked);
+    const label   = document.getElementById(labelId);
+    const cb      = label.querySelector('input[type="checkbox"]');
+    const checked = cb.checked;
+
+    // 같은 .limit-checks 블록 안의 모든 항목
+    const block = label.closest('.limit-checks');
+
+    if (labelId.endsWith('d')) {
+      // "정당하지 않음" 선택 → 정당한 사유 3개 모두 해제
+      if (checked) {
+        block.querySelectorAll('.limit-check-item:not(.unjust)').forEach(el => {
+          el.classList.remove('checked');
+          const c = el.querySelector('input[type="checkbox"]');
+          if (c) c.checked = false;
+        });
+      }
+    } else {
+      // 정당한 사유 선택 → "정당하지 않음" 해제
+      if (checked) {
+        block.querySelectorAll('.limit-check-item.unjust').forEach(el => {
+          el.classList.remove('checked');
+          const c = el.querySelector('input[type="checkbox"]');
+          if (c) c.checked = false;
+        });
+      }
+    }
+
+    label.classList.toggle('checked', checked);
     scheduleSave();
   }
 

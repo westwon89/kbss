@@ -101,9 +101,57 @@
   .banner-subtitle { color:rgba(255,255,255,0.7); font-size:12px; font-weight:500; }
 
   /* ── RIGHTS LEGEND ── */
+  /* ── 기본권 카드 범례 ── */
   .rights-legend { background:var(--white); border-radius:12px; padding:14px 18px; margin-bottom:12px; box-shadow:var(--shadow-sm); border-left:5px solid var(--gold); }
   .rights-legend-title { font-size:12px; font-weight:900; color:var(--navy); margin-bottom:10px; }
-  .rights-pills { display:flex; flex-wrap:wrap; gap:6px; }
+
+  .rights-cards { display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; }
+  @media (max-width:700px) { .rights-cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width:440px) { .rights-cards { grid-template-columns: 1fr; } }
+
+  .rc {
+    border-radius: 9px; padding: 9px 11px;
+    border: 1.5px solid; display: flex; flex-direction: column; gap: 5px;
+  }
+  .rc-header { display:flex; align-items:center; gap:6px; }
+  .rc-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .rc-name { font-size:13px; font-weight:900; }
+  .rc-sub  { font-size:10px; font-weight:700; opacity:0.7; }
+  .rc-desc { font-size:10.5px; line-height:1.5; font-weight:500; }
+  .rc-items { display:flex; flex-wrap:wrap; gap:4px; }
+  .rc-item {
+    font-size:10px; font-weight:700;
+    padding: 2px 7px; border-radius:8px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  .rc-item-tip { font-style:italic; opacity:0.75; }
+
+  .rc-equality { background:#fef3f2; color:#c0392b; border-color:#e8a09a; }
+  .rc-equality .rc-dot { background:#c0392b; }
+  .rc-equality .rc-item { border-color:#e8a09a; }
+
+  .rc-freedom  { background:#eff8f0; color:#1a6b3a; border-color:#7ec89e; }
+  .rc-freedom  .rc-dot { background:#1a6b3a; }
+  .rc-freedom  .rc-item { border-color:#7ec89e; }
+
+  .rc-voting   { background:#fdf6e3; color:#8a5a00; border-color:#d4a847; }
+  .rc-voting   .rc-dot { background:#c9973a; }
+  .rc-voting   .rc-item { border-color:#d4a847; }
+
+  .rc-claim    { background:#eef4ff; color:#1d5fa8; border-color:#89b4e8; }
+  .rc-claim    .rc-dot { background:#1d5fa8; }
+  .rc-claim    .rc-item { border-color:#89b4e8; }
+
+  .rc-social   { background:#f3eeff; color:#5b3fa0; border-color:#b09ad8; }
+  .rc-social   .rc-dot { background:#5b3fa0; }
+  .rc-social   .rc-item { border-color:#b09ad8; }
+
+  .rc-art10    { background:#fff0f6; color:#a02060; border-color:#d888b0; }
+  .rc-art10    .rc-dot { background:#a02060; }
+  .rc-art10    .rc-item { border-color:#d888b0; }
+
+  /* 구 pill 스타일 (예시 카드 kw-tag에서 참조) */
   .pill { display:flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; border:1.5px solid; }
   .pill-dot { width:7px; height:7px; border-radius:50%; }
   .pill-equality { background:#fef3f2; color:#c0392b; border-color:#e8a09a; } .pill-equality .pill-dot { background:#c0392b; }
@@ -685,14 +733,72 @@
   </div>
 
   <div class="rights-legend">
-    <div class="rights-legend-title">📌 기본권 종류 한눈에 보기</div>
-    <div class="rights-pills">
-      <div class="pill pill-equality"><div class="pill-dot"></div>평등권 — 차별받지 않을 권리 (헌법 제11조)</div>
-      <div class="pill pill-freedom"><div class="pill-dot"></div>자유권 — 간섭받지 않을 자유 (제12~22조)</div>
-      <div class="pill pill-voting"><div class="pill-dot"></div>참정권 — 선거권·공무담임권·국민투표권</div>
-      <div class="pill pill-claim"><div class="pill-dot"></div>청구권 — 국가에 요청할 권리 (제26~29조)</div>
-      <div class="pill pill-social"><div class="pill-dot"></div>사회권 — 인간다운 삶을 누릴 권리 (제31~36조)</div>
-      <div class="pill pill-art10"><div class="pill-dot"></div>헌법 제10조 — 인간의 존엄과 행복추구권</div>
+    <div class="rights-legend-title">📌 기본권 종류 한눈에 보기 — 교과서 내용 정리</div>
+    <div class="rights-cards">
+
+      <div class="rc rc-equality">
+        <div class="rc-header"><div class="rc-dot"></div><span class="rc-name">평등권</span><span class="rc-sub">헌법 제11조</span></div>
+        <div class="rc-desc">모든 국민이 차별받지 않고 동등하게 대우받을 권리</div>
+        <div class="rc-items">
+          <span class="rc-item">성별에 의한 차별 금지</span>
+          <span class="rc-item">종교에 의한 차별 금지</span>
+          <span class="rc-item">사회적 신분에 의한 차별 금지</span>
+          <span class="rc-item">양성평등</span>
+        </div>
+      </div>
+
+      <div class="rc rc-freedom">
+        <div class="rc-header"><div class="rc-dot"></div><span class="rc-name">자유권</span><span class="rc-sub">헌법 제12~22조</span></div>
+        <div class="rc-desc">국가 권력의 간섭을 받지 않고 자유롭게 생활할 수 있는 권리</div>
+        <div class="rc-items">
+          <span class="rc-item">신체의 자유</span>
+          <span class="rc-item">거주·이전의 자유</span>
+          <span class="rc-item">직업 선택의 자유</span>
+          <span class="rc-item">종교의 자유</span>
+          <span class="rc-item">언론·출판의 자유</span>
+          <span class="rc-item">집회·결사의 자유</span>
+        </div>
+      </div>
+
+      <div class="rc rc-voting">
+        <div class="rc-header"><div class="rc-dot"></div><span class="rc-name">참정권</span><span class="rc-sub">헌법 제24~25조</span></div>
+        <div class="rc-desc">국가의 의사 결정에 참여할 수 있는 권리</div>
+        <div class="rc-items">
+          <span class="rc-item">선거권 (국민의 대표를 뽑을 권리)</span>
+          <span class="rc-item">공무담임권 (공직을 맡을 권리)</span>
+          <span class="rc-item">국민투표권 (중요 정책을 직접 결정)</span>
+        </div>
+      </div>
+
+      <div class="rc rc-claim">
+        <div class="rc-header"><div class="rc-dot"></div><span class="rc-name">청구권</span><span class="rc-sub">헌법 제26~29조</span></div>
+        <div class="rc-desc">다른 기본권이 침해되었을 때 구제를 요구할 수 있는 권리</div>
+        <div class="rc-items">
+          <span class="rc-item">청원권 (국가기관에 의견·희망 제출)</span>
+          <span class="rc-item">재판청구권 (법원에 재판을 받을 권리)</span>
+          <span class="rc-item">국가배상청구권 (국가의 잘못으로 피해 시 배상 요구)</span>
+        </div>
+      </div>
+
+      <div class="rc rc-social">
+        <div class="rc-header"><div class="rc-dot"></div><span class="rc-name">사회권</span><span class="rc-sub">헌법 제31~36조</span></div>
+        <div class="rc-desc">국민이 국가에 인간다운 생활을 요구할 수 있는 적극적인 권리</div>
+        <div class="rc-items">
+          <span class="rc-item">교육을 받을 권리</span>
+          <span class="rc-item">근로의 권리 (일할 권리, 적정 임금)</span>
+          <span class="rc-item">인간다운 생활을 할 권리</span>
+          <span class="rc-item">쾌적한 환경에서 살 권리</span>
+        </div>
+      </div>
+
+      <div class="rc rc-art10">
+        <div class="rc-header"><div class="rc-dot"></div><span class="rc-name">헌법 제10조</span><span class="rc-sub">모든 기본권의 기초</span></div>
+        <div class="rc-desc">인간의 존엄과 가치, 행복추구권 — 헌법에 보장된 모든 기본권의 토대</div>
+        <div class="rc-items">
+          <span class="rc-item rc-item-tip">※ 모든 기본권은 이 조항에서 출발합니다</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -761,9 +867,11 @@
       <div class="example-scenario-wrap">
         <div class="example-scenario-label">📋 예시 사례</div>
         <div class="example-scenario">
-          중학생 준서는 학교 수업 중 선생님이 부당하다고 느껴지는 점을 일기에 솔직하게 적었습니다.
-          그런데 담임 선생님이 <strong>허락 없이 준서의 일기를 읽고 반 친구들 앞에서 내용을 공개</strong>했습니다.
-          준서는 너무 창피하고 억울했습니다.
+          중학생 준서는 학교 급식 메뉴가 마음에 들지 않아 학교 SNS 계정에
+          <strong>"우리 학교 급식은 너무 형편없다"</strong>는 글을 올렸습니다.
+          그런데 교장 선생님은 "학교 이미지를 훼손한다"는 이유로
+          <strong>준서에게 글을 강제로 삭제하도록 지시하고, 앞으로 학교에 관한 어떤 글도 올리지 말라</strong>고 했습니다.
+          준서는 자신의 생각을 표현할 권리가 있다고 생각했습니다.
         </div>
       </div>
 
@@ -772,13 +880,13 @@
         <div class="example-hint-label">💡 생각 열기 힌트 (접혀 있던 것을 펼치면 이런 내용이 나와요)</div>
         <div class="example-hint">
           <ul class="scaffold-list" style="margin-bottom:6px;">
-            <li>준서의 일기를 허락 없이 읽은 것은 개인의 어떤 공간을 침범한 것일까요?</li>
-            <li>반 친구들 앞에 공개한 것은 준서의 어떤 권리를 침해한 걸까요?</li>
+            <li>준서가 SNS에 자신의 생각을 쓰는 것은 헌법이 보장하는 어떤 자유와 관련될까요?</li>
+            <li>교장 선생님이 내세운 이유 "학교 이미지 훼손"은 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당할까요? 정당한 이유가 될 수 있을까요?</li>
           </ul>
           <div style="display:flex;flex-wrap:wrap;gap:5px;">
-            <span class="kw-tag">헌법 제17조</span>
+            <span class="kw-tag">헌법 제21조</span>
             <span class="kw-tag">헌법 제10조</span>
-            <span class="kw-tag">사생활의 비밀</span>
+            <span class="kw-tag">언론·출판의 자유</span>
           </div>
           <div style="margin-top:8px; background:#fff2f2; border:1px solid #f5c0c0; border-radius:7px; padding:6px 10px; font-size:11.5px; color:#7a1a1a;">
             <strong>❌ 침해된 기본권</strong>을 쓸 때는 → <em>준서 입장</em>에서 어떤 권리를 빼앗겼는지 생각해 보세요.
@@ -796,14 +904,7 @@
             <div class="ex-num">①</div>
             <div class="ex-answer">
               <span class="ex-tag ex-violate">❌ 침해</span>
-              <span><strong>자유권(사생활의 자유)</strong> — 선생님이 준서의 허락 없이 일기를 열람하여 사생활의 비밀과 자유를 침해하였다.</span>
-            </div>
-          </div>
-          <div class="ex-row">
-            <div class="ex-num">②</div>
-            <div class="ex-answer">
-              <span class="ex-tag ex-violate">❌ 침해</span>
-              <span><strong>헌법 제10조(인간의 존엄과 행복추구권)</strong> — 반 친구들 앞에 일기 내용을 공개하여 준서의 인격권과 존엄성을 침해하였다.</span>
+              <span><strong>자유권(언론·출판의 자유)</strong> — 교장 선생님이 준서에게 SNS 글 삭제를 강요하고 앞으로의 글쓰기를 금지하여, 자신의 생각을 자유롭게 표현할 권리를 침해하였다.</span>
             </div>
           </div>
         </div>
@@ -818,7 +919,7 @@
             <span class="ex-check-item ex-unjust-checked">❌ 정당하지 않음 ✓</span>
           </div>
           <div class="ex-reason">
-            선생님의 행동은 국가 안전보장, 질서 유지, 공공복리 중 어디에도 해당하지 않는다. 따라서 이 기본권 침해는 정당한 이유가 없다.
+            "학교 이미지 훼손"은 국가 안전보장·질서 유지·공공복리 어디에도 해당하지 않는다. 단순히 학교에 불리한 글이라는 이유만으로 표현의 자유를 막는 것은 정당한 제한 사유가 없다.
           </div>
         </div>
 
@@ -827,7 +928,7 @@
           <div class="ex-block-header">📋 ③ 최종 판단 — <span class="ex-filled">이렇게 판단했어요</span></div>
           <div class="ex-verdict-row">
             <span class="ex-verdict-btn ex-verdict-violate">❌ 침해</span>
-            <span class="ex-verdict-text">선생님이 준서의 동의 없이 일기를 읽고 공개한 것은 사생활의 자유와 인간의 존엄성을 침해한 것이며, 정당한 기본권 제한의 사유도 없으므로 부당한 기본권 침해이다.</span>
+            <span class="ex-verdict-text">교장 선생님의 지시는 준서의 <strong>자유권(언론·출판의 자유)</strong>을 침해한 것이며, 국가 안전보장·질서 유지·공공복리 어느 사유에도 해당하지 않으므로 정당하지 않은 기본권 침해이다.</span>
           </div>
         </div>
 
@@ -844,13 +945,13 @@
           <div class="ex-share-item">
             <div class="ex-share-label">📢 원래 모둠에서 설명할 핵심 내용 예시</div>
             <div class="ex-share-bubble">
-              이 사례에서 준서의 <strong>자유권(사생활의 자유)</strong>과 <strong>헌법 제10조(존엄과 행복추구권)</strong>이 침해됐어. 선생님이 허락 없이 일기를 읽고 공개했기 때문이야. 국가 안전보장·질서 유지·공공복리 어디에도 해당하지 않아서 <strong>정당하지 않은 침해</strong>야.
+              이 사례에서 준서의 <strong>자유권(언론·출판의 자유)</strong>이 침해됐어. 교장 선생님이 글 삭제를 강요하고 앞으로 글을 못 올리게 했기 때문이야. 학교 이미지 보호는 국가 안전보장·질서 유지·공공복리 어디에도 해당하지 않아서 <strong>정당하지 않은 침해</strong>야.
             </div>
           </div>
           <div class="ex-share-item">
             <div class="ex-share-label">✍️ 토의 중 나온 다양한 의견 메모 예시</div>
             <div class="ex-share-bubble">
-              처음엔 자유권인지 평등권인지 의견이 나뉘었어. 결국 <em>일기를 허락 없이 열람한 것</em>은 자유권, <em>공개한 것</em>은 인격권(헌법 제10조)이라고 결론지었어. 제한 사유는 없다는 데 모두 동의했어.
+              처음엔 자유권인지 헌법 제10조인지 의견이 나뉘었어. <em>글을 못 올리게 한 것</em>은 언론·출판의 자유(자유권), <em>원하는 대로 살지 못하게 한 것</em>은 행복추구권(헌법 제10조)이라고 결론 냈어. 제한 사유가 없다는 데 모두 동의했어.
             </div>
           </div>
         </div>
@@ -937,7 +1038,7 @@
 
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권을 찾아 쓰세요 (1~2가지)</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
@@ -1105,17 +1206,11 @@
 
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 제한된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 제한된 기본권을 찾아 쓰세요 (1가지)</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
-                <div class="rights-item-inner">
-                  <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
-                </div>
-              </div>
-              <div class="rights-item">
-                <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
                   <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
@@ -1192,46 +1287,45 @@
 
   <!-- ══════════════════════════════════════════
        CASE 3 · 참정권 사례
-       — 선거권 / 국민투표권 / 공무담임권
+       — 선거권 침해
   ══════════════════════════════════════════ -->
   <div class="case-card">
     <div class="case-header">
       <div class="case-number">3<span>번 담당</span></div>
       <div class="case-header-content">
         <div class="case-label">Case 03 · 선거 &amp; 참정</div>
-        <div class="case-title">선거일 투표 참여와 주민 투표·공무원 채용 거부 논란</div>
+        <div class="case-title">투표 당일 부당하게 투표를 거부당한 사례</div>
       </div>
     </div>
     <div class="case-body">
       <div class="case-scenario">
-        만 18세 고등학생 도훈이는 생애 처음으로 대통령 선거 투표를 했습니다.
-        한편 도훈이가 사는 마을에서는 새 도로 건설에 관한 <strong>주민 투표</strong>가 예정되어 있었는데,
-        마을 이장이 "주민 투표는 어른들만 참여하는 거야"라며 <strong>도훈이의 참여를 막았습니다.</strong>
-        또한 도훈이의 삼촌(만 32세)은 지역 구청 공무원 채용 시험에 지원했으나,
-        담당자로부터 <strong>특정 정당원이라는 이유로 접수가 거부</strong>당했습니다.
+        만 18세가 된 고등학생 도훈이는 생애 처음으로 국회의원 선거일에
+        <strong>설레는 마음으로 투표소를 찾아갔습니다.</strong>
+        그런데 투표소 담당자가 도훈이의 신분증을 보더니
+        <strong>"고등학생은 아직 어려서 투표하면 안 된다"</strong>며
+        아무런 법적 근거 없이 <strong>투표 용지를 주지 않고 투표소에서 내보냈습니다.</strong>
+        도훈이는 자신에게 투표할 권리가 있다는 것을 알고 있었기 때문에
+        몹시 억울했습니다.
       </div>
 
       <div class="scaffold-box">
         <div class="scaffold-title">💡 생각 열기 <button class="scaffold-toggle" onclick="toggleScaffold(this)">▼ 펼치기</button></div>
         <div class="scaffold-content">
           <ul class="scaffold-list">
-            <li>도훈이는 대통령 선거에서 투표했습니다. 국민이 선거에서 투표할 수 있는 권리를 무엇이라고 배웠나요?</li>
-            <li>국가나 지방자치단체의 중요한 결정을 국민이 직접 투표로 결정하는 것을 '국민투표'라고 합니다. 이것과 관련된 참정권의 이름은 무엇인가요?</li>
-            <li>삼촌이 지원한 공무원은 나라의 일을 맡는 자리입니다. 이런 자리에 지원할 수 있는 권리를 무엇이라고 하나요? 정당원이라는 이유로 거부당한 것은 이 권리와 어떤 관계가 있을까요?</li>
+            <li>우리나라는 만 18세 이상이면 선거에서 투표할 수 있습니다. 이처럼 국민이 선거에서 직접 투표할 수 있는 권리를 무엇이라고 배웠나요?</li>
+            <li>담당자가 내세운 이유 "고등학생은 어리다"는 것이 국가 안전보장, 질서 유지, 공공복리 중 어디에 해당하나요? 정당한 이유가 될 수 있을까요?</li>
+            <li>도훈이가 만 18세임에도 투표를 거부당했다면, 이것은 기본권이 보장된 것인가요, 침해된 것인가요?</li>
           </ul>
           <div class="scaffold-keywords">
             <div class="scaffold-keywords-label">🔑 관련 개념어 (기본권 이름을 직접 찾아보세요)</div>
-            <span class="kw-tag">선거권</span><span class="kw-tag">국민투표권</span>
-            <span class="kw-tag">공무담임권</span><span class="kw-tag">참정권</span>
+            <span class="kw-tag">선거권</span>
+            <span class="kw-tag">참정권</span>
+            <span class="kw-tag">만 18세 이상</span>
           </div>
           <div class="scaffold-perspective">
             <div class="persp-item persp-violate">
               <span class="persp-icon">❌</span>
-              <span><strong>침해된 기본권</strong>을 쓸 때는 → <em>도훈이(주민 투표 막힘) 또는 삼촌(채용 거부) 입장</em>에서 어떤 참정권을 빼앗겼는지 생각해 보세요.</span>
-            </div>
-            <div class="persp-item persp-protect">
-              <span class="persp-icon">✅</span>
-              <span><strong>보장된 기본권</strong>을 쓸 때는 → <em>도훈이(대통령 선거 투표) 입장</em>에서 제대로 행사한 권리가 무엇인지 생각해 보세요.</span>
+              <span><strong>침해된 기본권</strong>을 쓸 때는 → <em>도훈이 입장</em>에서 어떤 참정권을 빼앗겼는지 생각해 보세요.</span>
             </div>
           </div>
         </div>
@@ -1273,17 +1367,11 @@
 
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권을 찾아 쓰세요 (1가지)</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
-                <div class="rights-item-inner">
-                  <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
-                </div>
-              </div>
-              <div class="rights-item">
-                <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
                   <textarea rows="2" placeholder="침해된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>
@@ -1437,7 +1525,7 @@
 
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 침해된 기본권을 찾아 쓰세요 (1~2가지)</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
@@ -1605,17 +1693,11 @@
 
       <div class="analysis-grid">
         <div class="analysis-block block-rights">
-          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 제한된 기본권 2가지를 찾아 쓰세요</div>
+          <div class="analysis-block-header"><span class="block-icon">🔍</span> ① 제한된 기본권을 찾아 쓰세요 (1가지)</div>
           <div class="analysis-block-body">
             <div class="rights-row">
               <div class="rights-item">
                 <div class="rights-item-num">①</div>
-                <div class="rights-item-inner">
-                  <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
-                </div>
-              </div>
-              <div class="rights-item">
-                <div class="rights-item-num">②</div>
                 <div class="rights-item-inner">
                   <textarea rows="2" placeholder="제한된 기본권 이름과 그 이유를 써 보세요."></textarea>
                 </div>

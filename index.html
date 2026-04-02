@@ -62,6 +62,26 @@
   #save-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,151,58,0.55); }
   #save-btn:active { transform: translateY(0); }
 
+  /* ── 백업 버튼 ── */
+  .backup-btn {
+    background: rgba(255,255,255,0.15);
+    color: var(--white); border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 8px; padding: 7px 12px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 700;
+    cursor: pointer; white-space: nowrap; transition: all 0.15s;
+    display: inline-flex; align-items: center;
+  }
+  .backup-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.6); }
+  .load-btn { /* label처럼 동작 */ }
+
+  /* ── 자동저장 안내바 ── */
+  #autosave-bar {
+    max-width: 920px; margin: 6px auto 0;
+    font-size: 10.5px; color: rgba(255,255,255,0.55);
+    padding: 0 4px; display: flex; align-items: center; gap: 5px;
+  }
+  #autosave-msg { color: rgba(255,255,255,0.7); }
+
   /* ── WORKSHEET ── */
   #worksheet { max-width: 920px; margin: 0 auto; padding: 20px 16px 30px; }
 
@@ -400,11 +420,17 @@
       <div class="header-title">기본권 사례 연습<span>중학교 사회 · 인권과 헌법</span></div>
     </div>
     <div class="header-inputs">
-      <div class="header-input-group"><label>학번</label><input type="text" id="student-id" placeholder="예) 30101" maxlength="10"></div>
-      <div class="header-input-group"><label>이름</label><input type="text" id="student-name" placeholder="이름 입력" maxlength="10"></div>
-      <button id="save-btn" onclick="saveImage()">📥 나의 활동지 이미지로 저장하기</button>
+      <div class="header-input-group"><label>학번</label><input type="text" id="student-id" placeholder="예) 30101" maxlength="10" oninput="scheduleSave()"></div>
+      <div class="header-input-group"><label>이름</label><input type="text" id="student-name" placeholder="이름 입력" maxlength="10" oninput="scheduleSave()"></div>
+      <button id="save-btn" onclick="saveImage()">📥 이미지로 저장</button>
+      <button class="backup-btn" onclick="exportJSON()" title="내용을 파일로 저장해 다음 시간에 불러올 수 있습니다">💾 내용 파일로 저장</button>
+      <label class="backup-btn load-btn" title="저장해 둔 파일을 불러옵니다">
+        📂 내용 불러오기
+        <input type="file" id="load-file" accept=".json" onchange="importJSON(event)" style="display:none">
+      </label>
     </div>
   </div>
+  <div id="autosave-bar">🔄 <span id="autosave-msg">브라우저에 자동저장 중...</span></div>
 </div>
 
 <!-- ── WORKSHEET BODY ── -->
@@ -1163,20 +1189,230 @@
 
 
 <script>
+  /* ════════════════════════════════════════════
+     데이터 수집 — 현재 활동지 전체 상태를 객체로
+  ════════════════════════════════════════════ */
+  function collectState() {
+    const state = {};
+
+    /* 학번·이름 */
+    state.studentId   = document.getElementById('student-id').value;
+    state.studentName = document.getElementById('student-name').value;
+
+    /* 모든 textarea */
+    state.textareas = [];
+    document.querySelectorAll('#worksheet textarea').forEach((ta, i) => {
+      state.textareas.push(ta.value);
+    });
+
+    /* 모둠원 이름 입력 */
+    state.memberNames = [];
+    document.querySelectorAll('.member-name-input').forEach(inp => {
+      state.memberNames.push(inp.value);
+    });
+
+    /* 내 담당 사례 (active 버튼 텍스트) */
+    const activeCase = document.querySelector('.my-case-btn.active');
+    state.myCase = activeCase ? activeCase.textContent : '';
+
+    /* 체크박스 (.limit-check-item) */
+    state.checkboxes = [];
+    document.querySelectorAll('.limit-check-item').forEach(el => {
+      state.checkboxes.push(el.classList.contains('checked'));
+    });
+
+    /* verdict 버튼 */
+    state.verdicts = [];
+    document.querySelectorAll('.verdict-row').forEach(row => {
+      const active = row.querySelector('.verdict-btn.active');
+      state.verdicts.push(active ? active.textContent.trim() : '');
+    });
+
+    /* type-select (침해/보장 버튼) */
+    state.typeSelects = [];
+    document.querySelectorAll('.type-select').forEach(sel => {
+      const active = sel.querySelector('.type-btn.active');
+      state.typeSelects.push(active ? active.textContent.trim() : '');
+    });
+
+    /* 별점 */
+    state.stars = [];
+    document.querySelectorAll('.star-row').forEach(row => {
+      const active = row.querySelector('.star-btn.lit');
+      state.stars.push(active ? active.textContent.trim() : '');
+    });
+
+    return state;
+  }
+
+  /* ════════════════════════════════════════════
+     상태 복원
+  ════════════════════════════════════════════ */
+  function restoreState(state) {
+    if (!state) return;
+
+    /* 학번·이름 */
+    if (state.studentId)   document.getElementById('student-id').value   = state.studentId;
+    if (state.studentName) document.getElementById('student-name').value = state.studentName;
+
+    /* textarea */
+    if (state.textareas) {
+      document.querySelectorAll('#worksheet textarea').forEach((ta, i) => {
+        if (state.textareas[i] !== undefined) ta.value = state.textareas[i];
+      });
+    }
+
+    /* 모둠원 이름 */
+    if (state.memberNames) {
+      document.querySelectorAll('.member-name-input').forEach((inp, i) => {
+        if (state.memberNames[i] !== undefined) inp.value = state.memberNames[i];
+      });
+    }
+
+    /* 내 담당 사례 */
+    if (state.myCase) {
+      document.querySelectorAll('.my-case-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === state.myCase);
+      });
+    }
+
+    /* 체크박스 */
+    if (state.checkboxes) {
+      document.querySelectorAll('.limit-check-item').forEach((el, i) => {
+        if (state.checkboxes[i]) {
+          el.classList.add('checked');
+          const cb = el.querySelector('input[type="checkbox"]');
+          if (cb) cb.checked = true;
+        }
+      });
+    }
+
+    /* verdict */
+    if (state.verdicts) {
+      document.querySelectorAll('.verdict-row').forEach((row, i) => {
+        if (!state.verdicts[i]) return;
+        row.querySelectorAll('.verdict-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.textContent.trim() === state.verdicts[i]);
+        });
+      });
+    }
+
+    /* type-select */
+    if (state.typeSelects) {
+      document.querySelectorAll('.type-select').forEach((sel, i) => {
+        if (!state.typeSelects[i]) return;
+        sel.querySelectorAll('.type-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.textContent.trim() === state.typeSelects[i]);
+        });
+      });
+    }
+
+    /* 별점 */
+    if (state.stars) {
+      document.querySelectorAll('.star-row').forEach((row, i) => {
+        if (!state.stars[i]) return;
+        row.querySelectorAll('.star-btn').forEach(btn => {
+          btn.classList.toggle('lit', btn.textContent.trim() === state.stars[i]);
+        });
+      });
+    }
+  }
+
+  /* ════════════════════════════════════════════
+     자동저장 (localStorage) — 입력할 때마다 1.5초 후 저장
+  ════════════════════════════════════════════ */
+  const STORAGE_KEY = 'gibon-worksheet-v1';
+  let saveTimer = null;
+
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
+        showAutosaveMsg('✅ 자동저장 완료 — 이 브라우저에서 다시 열면 내용이 복원됩니다');
+      } catch(e) {
+        showAutosaveMsg('⚠️ 자동저장 실패 (저장 공간 부족)');
+      }
+    }, 1500);
+  }
+
+  function showAutosaveMsg(msg) {
+    const el = document.getElementById('autosave-msg');
+    if (!el) return;
+    el.textContent = msg;
+    clearTimeout(el._t);
+    el._t = setTimeout(() => {
+      el.textContent = '브라우저에 자동저장 중...';
+    }, 3500);
+  }
+
+  /* ════════════════════════════════════════════
+     JSON 파일로 내보내기 (💾 내용 파일로 저장)
+  ════════════════════════════════════════════ */
+  function exportJSON() {
+    const state = collectState();
+    const sid   = state.studentId   || '학번';
+    const sname = state.studentName || '이름';
+    const blob  = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const link  = document.createElement('a');
+    link.download = `기본권활동지_${sid}_${sname}.json`;
+    link.href = URL.createObjectURL(blob);
+    link.click();
+    showAutosaveMsg('💾 파일 저장 완료! 다음 시간에 "내용 불러오기"로 복원하세요.');
+  }
+
+  /* ════════════════════════════════════════════
+     JSON 파일 불러오기 (📂 내용 불러오기)
+  ════════════════════════════════════════════ */
+  function importJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const state = JSON.parse(e.target.result);
+        restoreState(state);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        showAutosaveMsg('📂 불러오기 완료! 이전에 작성한 내용이 복원되었습니다.');
+      } catch(err) {
+        alert('파일을 읽는 데 실패했습니다. 올바른 저장 파일인지 확인해 주세요.');
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = ''; /* 같은 파일 재선택 허용 */
+  }
+
+  /* ════════════════════════════════════════════
+     페이지 로드 시 localStorage에서 자동 복원
+  ════════════════════════════════════════════ */
+  window.addEventListener('load', () => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        restoreState(JSON.parse(saved));
+        showAutosaveMsg('✅ 이전에 작성한 내용을 복원했습니다.');
+      }
+    } catch(e) { /* 복원 실패 시 무시 */ }
+
+    /* 이후 모든 입력에 자동저장 연결 */
+    document.querySelectorAll('#worksheet textarea, .member-name-input').forEach(el => {
+      el.addEventListener('input', scheduleSave);
+    });
+  });
+
   /* ── 나의 담당 사례 선택 ── */
   function selectMyCase(btn) {
     document.querySelectorAll('.my-case-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    scheduleSave();
   }
 
-  /* ── 체크박스: input의 change 이벤트로 label에
-     .checked 클래스를 추가/제거 → 시각 반영
-     (label onclick과 input change의 이중 발화 없음)
-  ──────────────────────────────────────────── */
+  /* ── 체크박스 ── */
   function syncCheck(labelId) {
     const label = document.getElementById(labelId);
     const cb    = label.querySelector('input[type="checkbox"]');
     label.classList.toggle('checked', cb.checked);
+    scheduleSave();
   }
 
   /* ── 보장/침해 판단 버튼 ── */
@@ -1184,6 +1420,7 @@
     const row = btn.closest('.verdict-row');
     row.querySelectorAll('.verdict-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    scheduleSave();
   }
 
   /* ── 침해/보장 타입 선택 ── */
@@ -1191,6 +1428,7 @@
     const row = btn.closest('.type-select');
     row.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    scheduleSave();
   }
 
   /* ── 스캐폴딩 힌트 토글 ── */
@@ -1206,6 +1444,7 @@
     const btns = Array.from(row.querySelectorAll('.star-btn'));
     btns.forEach(b => b.classList.remove('lit'));
     btn.classList.add('lit');
+    scheduleSave();
   }
 
   /* ────────────────────────────────────────────
